@@ -1,0 +1,17 @@
+{
+    "name": "مدرسة تنغير - تعليم السياقة",
+    "short_name": "تنغير",
+    "description": "تطبيق تحضير رخصة السياقة B - 500+ سؤال بالدارجة",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#0B0B12",
+    "theme_color": "#F39C12",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "https://img.icons8.com/color/96/000000/car--v1.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        }
+    ]
+}
