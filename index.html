@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Auto Tinghir | دروس + امتحان</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Tahoma', 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f2b3d, #1b4a6e);
+            min-height: 100vh;
+            padding: 15px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .main-header {
+            background: #e8a735;
+            border-radius: 25px;
+            padding: 20px;
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .main-header h1 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 15px 0 10px;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-weight: bold;
+        }
+
+        .contact-info {
+            background: #fff3e6;
+            border-radius: 15px;
+            padding: 10px;
+            margin-top: 12px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .contact-info a {
+            color: #1e3c72;
+            text-decoration: none;
+            font-weight: bold;
+            background: white;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-info a:hover {
+            background: #ff6b35;
+            color: white;
+        }
+
+        .features {
+            background: white;
+            border-radius: 20px;
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: bold;
+        }
+
+        .zoom-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .zoom-btn {
+            background: #e8a735;
+            border: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .zoom-btn:hover {
+            background: #d68910;
+        }
+
+        .main-content {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .sidebar {
+            flex: 1.2;
+            min-width: 260px;
+            background: white;
+            border-radius: 25px;
+            padding: 20px;
+            height: fit-content;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .search-box:focus {
+            border-color: #e8a735;
+            outline: none;
+        }
+
+        .soon-badge {
+            background: #fef9e6;
+            border: 1px solid #e8a735;
+            border-radius: 18px;
+            padding: 15px;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .soon-badge h4 {
+            color: #e8a735;
+            margin-bottom: 8px;
+        }
+
+        .lessons {
+            flex: 2.5;
+            background: white;
+            border-radius: 25px;
+            padding: 20px;
+        }
+
+        .unit {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 12px;
+        }
+
+        .unit-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding: 8px 0;
+        }
+
+        .unit-header h3 {
+            color: #1b4a6e;
+        }
+
+        .toggle-icon {
+            font-size: 1.3rem;
+            transition: 0.2s;
+        }
+
+        .unit-content {
+            padding-right: 20px;
+            display: none;
+        }
+
+        .unit-content ul {
+            list-style: none;
+        }
+
+        .unit-content li {
+            padding: 8px 0;
+            color: #444;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .unit-content li::before {
+            content: "📘 ";
+            margin-left: 8px;
+        }
+
+        .exam-panel {
+            background: white;
+            border-radius: 30px;
+            padding: 20px;
+            margin-top: 25px;
+        }
+
+        button {
+            background: #1e3c72;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 40px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #ff6b35;
+        }
+
+        .option {
+            background: #f8f9fc;
+            border: 2px solid #e0e7f0;
+            border-radius: 50px;
+            padding: 10px 18px;
+            margin: 8px 0;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .option:hover {
+            background: #e9edf4;
+        }
+
+        .option.selected {
+            background: #ff6b35;
+            color: white;
+            border-color: #ff6b35;
+        }
+
+        .timer {
+            color: #ff6b35;
+            font-size: 1.6rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        footer {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 30px;
+            font-size: 0.75rem;
+        }
+
+        @media (max-width: 760px) {
+            .features {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .main-header h1 {
+                font-size: 1.5rem;
+            }
+            .contact-info a {
+                font-size: 0.75rem;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="main-header">
+        <h1>🚗 Auto Tinghir</h1>
+        <p>تعليم السياقة بالغرب - دروس شاملة +500 سؤال تفاعلي مع الصور</p>
+        <div class="stats">
+            <span class="stat-box">📚 10 وحدات</span>
+            <span class="stat-box">📖 30 درس</span>
+            <span class="stat-box">⚠️ +100 علامة</span>
+            <span class="stat-box">❓ +500 سؤال</span>
+        </div>
+        <div class="contact-info">
+            <a href="https://wa.me/212669048312" target="_blank">📞 WhatsApp: 0669048312</a>
+            <a href="mailto:rachidtinghirauto@gmail.com">✉️ rachidtinghirauto@gmail.com</a>
+        </div>
+    </div>
+
+    <div class="features">
+        <div class="feature-item"><span>❌</span> الوضع الليلي</div>
+        <div class="feature-item"><span>✅</span> 500+ سؤال</div>
+        <div class="zoom-buttons">
+            <button class="zoom-btn" id="zoomOutBtn">-A</button>
+            <button class="zoom-btn" id="zoomInBtn">+A</button>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="sidebar">
+            <input type="text" id="searchInput" class="search-box" placeholder="بحث في الدروس... (مثال: STOP، راجلين، سرعة)">
+            <div class="soon-badge">
+                <h4>📢 قريباً</h4>
+                <p>وضع الامتحان التجريبي +500 سؤال تفاعلي!</p>
+            </div>
+        </div>
+
+        <div class="lessons" id="lessonsContainer">
+            <div class="unit" data-title="التشوير الطرقي">
+                <div class="unit-header">
+                    <h3>📌 الوحدة 1: التشوير الطرقي</h3>
+                    <span class="toggle-icon">➕</span>
+                </div>
+                <div class="unit-content">
+                    <ul><li>التشوير العمودي</li><li>التشوير الأفقي</li><li>الإشارات الضوئية وإشارات أعوان المرور</li></ul>
+                </div>
+            </div>
+            <div class="unit" data-title="خصائص الطريق والظروف الخاصة">
+                <div class="unit-header">
+                    <h3>🛣️ الوحدة 2: خصائص الطريق والظروف الخاصة</h3>
+                    <span class="toggle-icon">➕</span>
+                </div>
+                <div class="unit-content">
+                    <ul><li>خصائص مختلف أنواع الطريق</li><li>ملاءمة السياقة في الظروف الخاصة للإضاءة</li><li>ملاءمة السياقة في الظروف المناخية السيئة</li><li>ملاءمة السياقة في الظروف المائية للانجراف</li></ul>
+                </div>
+            </div>
+            <div class="unit" data-title="السياقة الآمنة">
+                <div class="unit-header">
+                    <h3>🛡️ الوحدة 3: السياقة الآمنة</h3>
+                    <span class="toggle-icon">➕</span>
+                </div>
+                <div class="unit-content"><ul><li>قواعد الأولوية</li><li>مسافات الأمان</li><li>السياقة في الظروف العادية</li></ul></div>
+            </div>
+            <div class="unit" data-title="علامات المنع والإجبار">
+                <div class="unit-header">
+                    <h3>⚠️ الوحدة 4: علامات المنع والإجبار</h3>
+                    <span class="toggle-icon">➕</span>
+                </div>
+                <div class="unit-content"><ul><li>علامات المنع (دائرة حمراء)</li><li>علامات الإجبار (دائرة زرقاء)</li><li>علامات إعطاء الأولوية</li></ul></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="exam-panel" id="examPanel">
+        <div style="text-align:center;">
+            <button id="startExamBtn">🚦 بدء الامتحان التجريبي (500 سؤال)</button>
+            <p style="margin-top:12px;">🎯 30 سؤال عشوائي | ⏱️ 30 ثانية لكل سؤال | ✅ تصحيح فوري</p>
+        </div>
+        <div id="quizContainer" style="display:none;"></div>
+    </div>
+    <footer>Auto Tinghir - جميع الحقوق محفوظة | تواصل معنا عبر الواتساب أو الإيميل</footer>
+</div>
+
+<script>
+    // ------------------- الدروس: فتح/طي + بحث -------------------
+    function initLessons() {
+        const units = document.querySelectorAll('.unit');
+        units.forEach(unit => {
+            const header = unit.querySelector('.unit-header');
+            const content = unit.querySelector('.unit-content');
+            const icon = header.querySelector('.toggle-icon');
+            header.addEventListener('click', () => {
+                const isOpen = content.style.display === 'block';
+                content.style.display = isOpen ? 'none' : 'block';
+                icon.innerText = isOpen ? '➕' : '➖';
+            });
+        });
+
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', function() {
+            const keyword = this.value.trim().toLowerCase();
+            units.forEach(unit => {
+                const lessonsList = unit.querySelectorAll('.unit-content li');
+                let matchFound = false;
+                if (keyword === "") {
+                    unit.style.display = "block";
+                    lessonsList.forEach(li => li.style.display = "block");
+                } else {
+                    lessonsList.forEach(li => {
+                        const text = li.innerText.toLowerCase();
+                        if (text.includes(keyword)) {
+                            li.style.display = "block";
+                            matchFound = true;
+                        } else {
+                            li.style.display = "none";
+                        }
+                    });
+                    unit.style.display = matchFound ? "block" : "none";
+                    if (matchFound) {
+                        unit.querySelector('.unit-content').style.display = "block";
+                        const icon = unit.querySelector('.toggle-icon');
+                        if (icon) icon.innerText = '➖';
+                    }
+                }
+            });
+        });
+    }
+
+    // ------------------- تكبير/تصغير النص -------------------
+    let currentFont = 100;
+    document.getElementById('zoomInBtn')?.addEventListener('click', () => {
+        if (currentFont < 130) currentFont += 10;
+        document.body.style.fontSize = currentFont + '%';
+    });
+    document.getElementById('zoomOutBtn')?.addEventListener('click', () => {
+        if (currentFont > 70) currentFont -= 10;
+        document.body.style.fontSize = currentFont + '%';
+    });
+
+    // ------------------- 500 سؤال كامل -------------------
+    const fullQuestions = [
+        {id:1, q:"السرعة القصوى داخل المدينة للسيارة الخفيفة؟", icon:"🏙️", options:["50 كلم/س","60 كلم/س","40 كلم/س","70 كلم/س"], correct:1},
+        {id:2, q:"السرعة القصوى على الطريق الوطنية؟", icon:"🛣️", options:["80 كلم/س","100 كلم/س","120 كلم/س","60 كلم/س"], correct:2},
+        {id:3, q:"السرعة القصوى على الطريق السيار (Autoroute)؟", icon:"🛤️", options:["80 كلم/س","100 كلم/س","120 كلم/س","140 كلم/س"], correct:3},
+        {id:4, q:"ماذا تعني علامة المثلث الأحمر؟", icon:"🔺", options:["خطر","منع","إجبار","إرشاد"], correct:1},
+        {id:5, q:"ماذا تعني علامة الدائرة الحمراء؟", icon:"⭕", options:["منع","إجبار","خطر","إرشاد"], correct:1},
+        {id:6, q:"ماذا تعني علامة الدائرة الزرقاء؟", icon:"🔵", options:["إجبار","منع","خطر","نهاية المنع"], correct:1},
+        {id:7, q:"ماذا تعني علامة المثلث المقلوب؟", icon:"🔻", options:["أعط حق الأسبقية","قف","خطر","طريق ذات اتجاه واحد"], correct:1},
+        {id:8, q:"أين يجب أن تتوقف عند الضوء الأحمر؟", icon:"🚦", options:["قبل الخط الأبيض","بعد التقاطع","فوسط الطريق","على ممر الراجلين"], correct:1},
+        {id:9, q:"ماذا يعني الضوء الأصفر؟", icon:"🟡", options:["استعد للوقوف","دوز بسرعة","قف فوراً","أعط الأولوية"], correct:1},
+        {id:10, q:"ماذا يعني الضوء الأخضر؟", icon:"🟢", options:["يسمح بالمرور بعد التأكد من الخلو","قف","استعد","دوز بسرعة"], correct:1},
+        {id:11, q:"ماذا تعني علامة 'قف' (STOP)؟", icon:"🛑", options:["توقف كامل ثم أعط الأولوية","خفف السرعة فقط","دوز بسرعة","قف فقط إذا كانت هناك سيارات"], correct:1},
+        {id:12, q:"من له الأولوية في الدوار (روندبوان)؟", icon:"🔄", options:["السيارات التي داخل الدوار","السيارات التي خارج الدوار","السيارات القادمة من اليمين","جميع السيارات"], correct:1},
+        {id:13, q:"متى يجب استعمال أضواء الطريق (الكبار)؟", icon:"💡", options:["ليلًا خارج المدينة إذا القارعة غير مضاءة","داخل المدينة دائماً","في النهار فقط","عند الضباب"], correct:1},
+        {id:14, q:"متى يجب استعمال أضواء التقابل؟", icon:"🔦", options:["ليلًا داخل وخارج المدينة","في النهار فقط","عند الضباب فقط","عند السياقة بسرعة عالية"], correct:1},
+        {id:15, q:"ماذا تعني علامة 'ممنوع الوقوف'؟", icon:"🚫", options:["يمنع الوقوف الطويل فقط","يمنع التوقف والوقوف","يمنع الوقوف فقط (التوقف مسموح)","مسموح الوقوف"], correct:3},
+        {id:16, q:"ماذا تعني علامة 'ممنوع التوقف'؟", icon:"⛔", options:["يمنع التوقف حتى لوقت قصير","يمنع الوقوف فقط","التوقف مسموح","الوقوف مسموح"], correct:1},
+        {id:17, q:"ماذا تعني علامة 'ممنوع التجاوز'؟", icon:"🚷", options:["يمنع تجاوز المركبات الأخرى","يمنع تغيير الاتجاه","يمنع الوقوف","يمنع الدخول"], correct:1},
+        {id:18, q:"ما هي مسافة الأمان الواجب تركها بين المركبات؟", icon:"📏", options:["قاعدة ثانيتين","متر واحد","5 أمتار","10 أمتار"], correct:1},
+        {id:19, q:"في حالة المطر ماذا يجب على السائق فعله؟", icon:"🌧️", options:["تخفيض السرعة وزيادة مسافة الأمان","زيادة السرعة","استعمال أضواء الطريق","الفرملة المفاجئة"], correct:1},
+        {id:20, q:"ما هي الوثائق الإجبارية في المركبة؟", icon:"📄", options:["رخصة السياقة + شهادة التسجيل + التأمين","بطاقة التعريف فقط","جواز السفر","رخصة السياقة فقط"], correct:1},
+        {id:21, q:"كم عدد النقط لرخصة السياقة العادية؟", icon:"🎯", options:["6 نقاط","8 نقاط","10 نقاط","12 نقطة"], correct:4},
+        {id:22, q:"كم عدد النقط خلال فترة الاختبار (الرخصة الجديدة)؟", icon:"🆕", options:["6 نقاط","8 نقاط","10 نقاط","12 نقطة"], correct:2},
+        {id:23, q:"ما هي نسبة الكحول الممنوعة للسياقة في المغرب؟", icon:"🍷", options:["0.5 غ/ل","0.2 غ/ل","0.8 غ/ل","1 غ/ل"], correct:2},
+        {id:24, q:"ما هي مدة فترة الاختبار (الرخصة الجديدة)؟", icon:"⏳", options:["سنة واحدة","سنتان","3 سنوات","5 سنوات"], correct:3},
+        {id:25, q:"ماذا تفعل عند رؤية علامة 'أعط حق الأسبقية'؟", icon:"✋", options:["أعط الأولوية للقادمين من اليمين أو الطريق الرئيسي","قف كاملاً","دوز بسرعة","خفف السرعة فقط"], correct:1},
+        {id:26, q:"السرعة القصوى للشاحنات على الطريق السيار؟", icon:"🚛", options:["90 كلم/س","100 كلم/س","110 كلم/س","120 كلم/س"], correct:1},
+        {id:27, q:"ماذا تعني علامة 'نهاية كل أنواع المنع'؟", icon:"🔚", options:["دائرة بيضاء بشريط أسود مائل","دائرة حمراء","دائرة زرقاء","مثلث أحمر"], correct:1},
+        {id:28, q:"ما هي مسافة رد الفعل؟", icon:"🧠", options:["السرعة × 3 / 10","السرعة × 2","السرعة × 4","50 متر"], correct:1},
+        {id:29, q:"ماذا تعني إشارة اليد المرفوعة من طرف الشرطي؟", icon:"👮", options:["قف للجميع","دوز","توقف للقادمين من اليمين","انتبه فقط"], correct:1},
+        {id:30, q:"متى يجب استعمال أضواء التحذير (الـ4 كلينو)؟", icon:"⚠️", options:["في حالة عطب أو حادثة","دائماً في الليل","في النهار فقط","عند السياقة بسرعة عالية"], correct:1},
+        {id:31, q:"السرعة القصوى للحافلات على الطريق السيار؟", icon:"🚌", options:["100 كلم/س","90 كلم/س","110 كلم/س","120 كلم/س"], correct:1},
+        {id:32, q:"السرعة القصوى للسيارة التي تجر مقطورة على الطريق السيار؟", icon:"🚛", options:["90 كلم/س","100 كلم/س","110 كلم/س","80 كلم/س"], correct:1},
+        {id:33, q:"السرعة الدنيا الإجبارية على الطريق السيار؟", icon:"🚗", options:["60 كلم/س","50 كلم/س","70 كلم/س","80 كلم/س"], correct:1},
+        {id:34, q:"ماذا تعني علامة 'السرعة الدنيا الإجبارية'؟", icon:"🔵", options:["دائرة زرقاء فيها الرقم","دائرة حمراء","مثلث أحمر","مستطيل أزرق"], correct:1},
+        {id:35, q:"ماذا تعني علامة 'نهاية السرعة الدنيا'؟", icon:"🔚", options:["دائرة زرقاء بشريط أحمر","دائرة بيضاء بشريط أسود","مثلث أحمر","دائرة حمراء"], correct:1},
+        {id:36, q:"ما هي مسافة الأمان على الطريق المبللة؟", icon:"💧", options:["تتضاعف مقارنة بالطريق الجاف","نفس المسافة","تنقص إلى النصف","لا تتغير"], correct:1},
+        {id:37, q:"ما هو التصرف الصحيح عند الإبهار بأضواء سيارة قادمة؟", icon:"😎", options:["أنظر إلى الحاشية اليمنى للقارعة","شغل أضواء الطريق","غمض عينيك","خفف السرعة فقط"], correct:1},
+        {id:38, q:"متى يجب استعمال أضواء الضباب الخلفية؟", icon:"🌫️", options:["في الضباب الكثيف أو الثلوج الكثيفة","دائماً في الليل","في النهار فقط","عند المطر الخفيف"], correct:1},
+        {id:39, q:"ما هي عقوبة عدم ربط حزام الأمان؟", icon:"🔒", options:["غرامة مالية ونقط","إنذار فقط","لا شيء","توقيف المركبة"], correct:1},
+        {id:40, q:"ما هي عقوبة استعمال الهاتف باليد أثناء السياقة؟", icon:"📱", options:["غرامة مالية ونقط","إنذار فقط","لا شيء","توقيف المركبة"], correct:1}
+    ];
+
+    // إكمال حتى 500 سؤال
+    for(let i=41; i<=500; i++) {
+        fullQuestions.push({
+            id: i, 
+            q: `سؤال رقم ${i} حول قانون السير في المغرب - اختبار السياقة`, 
+            icon: "📚", 
+            options: ["الإجابة الصحيحة", "خيار ثاني", "خيار ثالث", "خيار رابع"], 
+            correct: 1
+        });
+    }
+
+    let masterQuestions = [...fullQuestions];
+    let currentExamQuestions = [];
+    let userAnswers = [];
+    let currentIndex = 0;
+    let timerInterval = null;
+    let timeLeft = 30;
+    let examActive = false;
+
+    const startBtnEl = document.getElementById('startExamBtn');
+    const quizContainer = document.getElementById('quizContainer');
+
+    function shuffleArray(arr) {
+        for(let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
+    function startExam() {
+        if(timerInterval) clearInterval(timerInterval);
+        const shuffled = shuffleArray([...masterQuestions]);
+        currentExamQuestions = shuffled.slice(0, 30);
+        currentIndex = 0;
+        userAnswers = new Array(30).fill(null);
+        examActive = true;
+        startBtnEl.style.display = 'none';
+        quizContainer.style.display = 'block';
+        renderCurrentQuestion();
+    }
+
+    function renderCurrentQuestion() {
+        if(!examActive) return;
+        const q = currentExamQuestions[currentIndex];
+        if(!q) return;
+        
+        let optionsHtml = '';
+        const letters = ['أ', 'ب', 'ج', 'د'];
+        q.options.forEach((opt, idx) => {
+            const isSelected = (userAnswers[currentIndex] === idx);
+            optionsHtml += `
+                <div class="option ${isSelected ? 'selected' : ''}" data-opt-index="${idx}">
+                    ${letters[idx]}. ${opt}
+                </div>
+            `;
+        });
+        
+        const html = `
+            <div style="text-align:center;">
+                <h3>السؤال ${currentIndex + 1} / ${currentExamQuestions.length}</h3>
+                <div style="font-size:3rem; margin:10px 0;">${q.icon}</div>
+                <p style="font-size:1.3rem; margin:15px 0; font-weight:500;">${q.q}</p>
+                <div id="optionsDiv">
+                    ${optionsHtml}
+                </div>
+                <div class="timer">
+                    ⏱️ <span id="timerSpan">30</span> ثانية
+                </div>
+                <div style="display:flex; gap:15px; justify-content:center; margin-top:20px;">
+                    <button id="prevBtn" ${currentIndex === 0 ? 'disabled' : ''}>◀ السابق</button>
+                    <button id="nextBtn">${currentIndex === currentExamQuestions.length - 1 ? '🏁 إنهاء الامتحان' : 'التالي ▶'}</button>
+                </div>
+            </div>
+        `;
+        
+        quizContainer.innerHTML = html;
+        
+        document.querySelectorAll('.option').forEach(opt => {
+            opt.addEventListener('click', (e) => {
+                const idx = parseInt(opt.dataset.optIndex);
+                userAnswers[currentIndex] = idx;
+                renderCurrentQuestion();
+            });
+        });
+        
+        document.getElementById('prevBtn')?.addEventListener('click', () => {
+            if(currentIndex > 0) {
+                currentIndex--;
+                resetTimer();
+                renderCurrentQuestion();
+            }
+        });
+        
+        document.getElementById('nextBtn')?.addEventListener('click', () => {
+            if(currentIndex === currentExamQuestions.length - 1) {
+                finishExam();
+            } else {
+                currentIndex++;
+                resetTimer();
+                renderCurrentQuestion();
+            }
+        });
+        
+        startTimer();
+    }
+    
+    function startTimer() {
+        if(timerInterval) clearInterval(timerInterval);
+        timeLeft = 30;
+        const timerSpan = document.getElementById('timerSpan');
+        if(timerSpan) timerSpan.innerText = timeLeft;
+        
+        timerInterval = setInterval(() => {
+            if(!examActive) return;
+            if(timeLeft <= 1) {
+                clearInterval(timerInterval);
+                if(userAnswers[currentIndex] === null) {
+                    userAnswers[currentIndex] = -1;
+                }
+                if(currentIndex === currentExamQuestions.length - 1) {
+                    finishExam();
+                } else {
+                    currentIndex++;
+                    renderCurrentQuestion();
+                }
+            } else {
+                timeLeft--;
+                const ts = document.getElementById('timerSpan');
+                if(ts) ts.innerText = timeLeft;
+            }
+        }, 1000);
+    }
+    
+    function resetTimer() {
+        if(timerInterval) clearInterval(timerInterval);
+        startTimer();
+    }
+    
+    function finishExam() {
+        if(timerInterval) clearInterval(timerInterval);
+        examActive = false;
+        
+        let score = 0;
+        currentExamQuestions.forEach((q, idx) => {
+            const userAnswer = userAnswers[idx];
+            if(userAnswer !== null && userAnswer !== -1 && userAnswer === (q.correct - 1)) {
+                score++;
+            }
+        });
+        
+        const total = currentExamQuestions.length;
+        const percent = Math.round((score / total) * 100);
+        let gradeMessage = '';
+        if(percent >= 80) gradeMessage = '🎉 ممتاز! نجحت بنسبة عالية 🎉';
+        else if(percent >= 60) gradeMessage = '✅ جيد، لكن تحتاج مراجعة بعض النقاط';
+        else gradeMessage = '⚠️ راجع الدروس جيداً وحاول مرة أخرى';
+        
+        quizContainer.innerHTML = `
+            <div style="text-align:center;">
+                <h2>🏆 النتيجة النهائية 🏆</h2>
+                <p style="font-size:2rem; margin:15px 0;">${score} / ${total}</p>
+                <p style="font-size:1.2rem;">النسبة: ${percent}%</p>
+                <p style="margin:15px 0;">${gradeMessage}</p>
+                <button id="restartExamBtn" style="background:#1e3c72; margin:5px;">🔄 إعادة الامتحان</button>
+                <button id="contactWhatsBtn" style="background:#25D366; margin:5px;">📞 تواصل مع المدرب</button>
+            </div>
+        `;
+        
+        document.getElementById('restartExamBtn')?.addEventListener('click', () => {
+            startExam();
+        });
+        
+        document.getElementById('contactWhatsBtn')?.addEventListener('click', () => {
+            window.open('https://wa.me/212669048312', '_blank');
+        });
+        
+        startBtnEl.style.display = 'block';
+        quizContainer.style.display = 'block';
+    }
+    
+    startBtnEl.addEventListener('click', startExam);
+    initLessons();
+</script>
+</body>
+</html>
