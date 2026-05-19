@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>مدونة السير المغربية – جميع الدروس مع صور العلامات</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+            color: #1a2a3a;
+            line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body.dark-mode {
+            background: #1a1a2e;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .sidebar,
+        body.dark-mode .content {
+            background: #16213e;
+            color: #e0e0e0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        body.dark-mode .sub-title {
+            background: #0f3460;
+            color: #e0e0e0;
+            border-right-color: #4a9eff;
+        }
+
+        body.dark-mode .module-title {
+            background: linear-gradient(135deg, #0f3460, #16213e);
+        }
+
+        body.dark-mode .tip-box {
+            background: #1a1a2e;
+            border-right-color: #0f3460;
+        }
+
+        body.dark-mode .warning-box {
+            background: #2d1b1b;
+            border-right-color: #c0392b;
+        }
+
+        body.dark-mode .info-box {
+            background: #1b2d1b;
+            border-right-color: #27ae60;
+        }
+
+        body.dark-mode .sign-card {
+            background: #0f3460;
+            border-color: #2a5298;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        body.dark-mode .header {
+            background: linear-gradient(135deg, #0f3460, #16213e);
+        }
+
+        .header h1 {
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        .controls {
+            max-width: 1400px;
+            margin: 1rem auto;
+            padding: 0 1rem;
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .search-container {
+            flex: 1;
+            min-width: 180px;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            font-size: 0.9rem;
+            border: 2px solid #ddd;
+            border-radius: 50px;
+            outline: none;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        #searchInput:focus {
+            border-color: #2a5298;
+            box-shadow: 0 0 0 3px rgba(42,82,152,0.2);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.6rem 1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: bold;
+            transition: all 0.3s;
+            background: #2a5298;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: scale(1.02);
+            opacity: 0.9;
+        }
+
+        .btn-dark {
+            background: #6c757d;
+        }
+
+        .btn-print {
+            background: #28a745;
+        }
+
+        .font-controls {
+            display: flex;
+            gap: 0.4rem;
+            align-items: center;
+        }
+
+        .font-btn {
+            background: #e9ecef;
+            color: #1a2a3a;
+            padding: 0.4rem 0.7rem;
+            font-size: 0.9rem;
+        }
+
+        body.dark-mode .font-btn {
+            background: #0f3460;
+            color: white;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .sidebar {
+            width: 260px;
+            background: white;
+            border-radius: 15px;
+            padding: 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0.5rem;
+            height: fit-content;
+            max-height: calc(100vh - 1rem);
+            overflow-y: auto;
+        }
+
+        .sidebar h3 {
+            color: #1e3c72;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 2px solid #2a5298;
+            font-size: 1rem;
+        }
+
+        body.dark-mode .sidebar h3 {
+            color: #e0e0e0;
+            border-bottom-color: #0f3460;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            margin-bottom: 0.3rem;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #1a2a3a;
+            display: block;
+            padding: 0.4rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-size: 0.85rem;
+        }
+
+        body.dark-mode .sidebar a {
+            color: #e0e0e0;
+        }
+
+        .sidebar a:hover {
+            background: #e9ecef;
+            color: #2a5298;
+        }
+
+        body.dark-mode .sidebar a:hover {
+            background: #0f3460;
+        }
+
+        .module-link {
+            font-weight: bold;
+            color: #1e3c72;
+            margin-top: 0.5rem;
+        }
+
+        body.dark-mode .module-link {
+            color: #4a9eff;
+        }
+
+        .content {
+            flex: 1;
+            background: white;
+            border-radius: 15px;
+            padding: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .module {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #dee2e6;
+            padding-bottom: 1rem;
+        }
+
+        .module-title {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .sub-module {
+            margin-bottom: 1.5rem;
+        }
+
+        .sub-title {
+            background: #e9ecef;
+            color: #1e3c72;
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            border-right: 4px solid #2a5298;
+        }
+
+        .lesson-content {
+            padding: 0 0.5rem;
+        }
+
+        .lesson-content h4 {
+            color: #2a5298;
+            margin: 0.8rem 0 0.4rem 0;
+            font-size: 1rem;
+        }
+
+        body.dark-mode .lesson-content h4 {
+            color: #4a9eff;
+        }
+
+        .lesson-content p {
+            margin-bottom: 0.6rem;
+            text-align: justify;
+            font-size: 0.95rem;
+        }
+
+        .sign-card {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 12px;
+            padding: 0.7rem;
+            margin: 0.5rem 0;
+            display: inline-block;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        .sign-symbol {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 0.3rem;
+        }
+
+        .sign-desc {
+            text-align: center;
+            font-weight: bold;
+            color: #2a5298;
+            font-size: 0.85rem;
+        }
+
+        body.dark-mode .sign-card {
+            background: #0f3460;
+            border-color: #2a5298;
+        }
+
+        body.dark-mode .sign-desc {
+            color: #4a9eff;
+        }
+
+        .signs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+            gap: 0.8rem;
+            margin: 0.8rem 0;
+        }
+
+        .tip-box, .warning-box, .info-box {
+            padding: 0.8rem;
+            margin: 0.8rem 0;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .tip-box {
+            background: #d1ecf1;
+            border-right: 5px solid #0c5460;
+        }
+
+        .warning-box {
+            background: #f8d7da;
+            border-right: 5px solid #721c24;
+        }
+
+        .info-box {
+            background: #d4edda;
+            border-right: 5px solid #155724;
+        }
+
+        .lesson-content ul, .lesson-content ol {
+            margin: 0.4rem 0 0.8rem 1.5rem;
+        }
+
+        .lesson-content li {
+            margin-bottom: 0.3rem;
+            font-size: 0.9rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 1.5rem;
+            color: #6c757d;
+            font-size: 0.75rem;
+        }
+
+        @media print {
+            .sidebar, .controls, .btn, .print-btn, .header, .footer, .font-controls, .btn-dark {
+                display: none;
+            }
+            .container {
+                display: block;
+                padding: 0;
+            }
+            .content {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                position: static;
+                max-height: none;
+                margin-bottom: 1rem;
+            }
+            .module-title {
+                font-size: 1rem;
+            }
+            .sub-title {
+                font-size: 0.9rem;
+            }
+            .signs-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            .btn {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.75rem;
+            }
+        }
+
+        .highlight {
+            background-color: #ffeb3b;
+        }
+
+        body.dark-mode .highlight {
+            background-color: #f39c12;
+            color: #1a2a3a;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>📘 مدونة السير المغربية</h1>
+    <p>جميع الدروس مع صور العلامات – كاملة للامتحان النظري (NARSA)</p>
+</div>
+
+<div class="controls">
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="🔍 بحث في الدروس... (مثال: STOP، راجلين، سرعة)">
+    </div>
+    <div class="btn-group">
+        <div class="font-controls">
+            <button class="btn font-btn" id="fontMinus">A-</button>
+            <button class="btn font-btn" id="fontPlus">A+</button>
+        </div>
+        <button class="btn btn-dark" id="darkModeToggle">🌙 الوضع الليلي</button>
+        <button class="btn btn-print" onclick="window.print()">🖨️ طباعة</button>
+    </div>
+</div>
+
+<div class="container">
+    <div class="sidebar" id="sidebar">
+        <h3>📚 فهرس الدروس</h3>
+        <ul id="sidebarList"></ul>
+    </div>
+    <div class="content" id="mainContent"></div>
+</div>
+
+<div class="footer">
+    <p>جميع الحقوق محفوظة - دروس مدونة السير المغربية | للامتحان النظري لرخصة السياقة</p>
+    <p>🚗 القيادة بسلامة تبدأ بالمعرفة الصحيحة</p>
+</div>
+
+<script>
+    const modulesData = [
+        {
+            id: "module1", title: "الوحدة 1: التشوير الطرقي",
+            subModules: [
+                { title: "التشوير العمودي", content: `
+                    <h4>📌 تعريف التشوير العمودي</h4>
+                    <p>مجموع العلامات التي تزود مستعملي الطريق بمعلومات (إرشادات، أخطار، اتجاهات). يختلف مجال تطبيقها بحسب الشكل واللون.</p>
+                    <div class="signs-grid">
+                        <div class="sign-card"><div class="sign-symbol">🔺</div><div class="sign-desc">مثلث أحمر ← خطر</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🔴⭕</div><div class="sign-desc">دائرة حمراء ← منع</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🔵⭕</div><div class="sign-desc">دائرة زرقاء ← إجبار</div></div>
+                        <div class="sign-card"><div class="sign-symbol">📋</div><div class="sign-desc">مستطيل ← إرشاد</div></div>
+                        <div class="sign-card"><div class="sign-symbol">➡️</div><div class="sign-desc">سهم ← اتجاه</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🟡⚠️</div><div class="sign-desc">خلفية صفراء ← تشوير مؤقت</div></div>
+                    </div>
+                    <h4>⚠️ علامات الخطر</h4>
+                    <div class="signs-grid">
+                        <div class="sign-card"><div class="sign-symbol">⚠️↪️</div><div class="sign-desc">منعرج يمين/يسار</div></div>
+                        <div class="sign-card"><div class="sign-symbol">⚠️🚶</div><div class="sign-desc">ممر راجلين</div></div>
+                        <div class="sign-card"><div class="sign-symbol">⚠️🔄</div><div class="sign-desc">سير في اتجاهين</div></div>
+                        <div class="sign-card"><div class="sign-symbol">⚠️🚧</div><div class="sign-desc">أشغال (خلفية صفراء)</div></div>
+                        <div class="sign-card"><div class="sign-symbol">⚠️💧</div><div class="sign-desc">انزلاق (مطر/جليد)</div></div>
+                        <div class="sign-card"><div class="sign-symbol">⚠️⛰️</div><div class="sign-desc">تساقط حجارة</div></div>
+                    </div>
+                    <h4>🚫 علامات المنع</h4>
+                    <div class="signs-grid">
+                        <div class="sign-card"><div class="sign-symbol">🔴50</div><div class="sign-desc">تحديد السرعة 50 كلم/س</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🚫➡️</div><div class="sign-desc">ممنوع الانعطاف يميناً</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🚫⬅️</div><div class="sign-desc">ممنوع الانعطاف يساراً</div></div>
+                        <div class="sign-card"><div class="sign-symbol">⛔🚫</div><div class="sign-desc">ممنوع التجاوز</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🚫🚗</div><div class="sign-desc">ممنوع ولوج السيارات</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🚫🅿️</div><div class="sign-desc">ممنوع الوقوف</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🚫⏸️</div><div class="sign-desc">ممنوع التوقف</div></div>
+                    </div>
+                    <div class="info-box">💡 <strong>علامات نهاية المنع:</strong> دائرة بيضاء بشريط أسود مائل</div>
+                    <h4>🔵 علامات الإجبار</h4>
+                    <div class="signs-grid">
+                        <div class="sign-card"><div class="sign-symbol">🔵➡️</div><div class="sign-desc">اتجاه إجباري (يمين/يسار)</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🔵🚲</div><div class="sign-desc">ممر إجباري للدراجات</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🔵⬇️</div><div class="sign-desc">سرعة دنيا إجبارية</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🔵⛓️</div><div class="sign-desc">إجبارية وضع سلاسل الثلوج</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🔵💡</div><div class="sign-desc">إجبارية تشغيل أضواء التقابل</div></div>
+                    </div>
+                    <div class="info-box">💡 <strong>علامات نهاية الإجبار:</strong> دائرة زرقاء بشريط أحمر مائل</div>
+                    <h4>🅿️ علامات الإرشاد</h4>
+                    <div class="signs-grid">
+                        <div class="sign-card"><div class="sign-symbol">🅿️</div><div class="sign-desc">موقف سيارات</div></div>
+                        <div class="sign-card"><div class="sign-symbol">💰🅿️</div><div class="sign-desc">توقف بلاكر (Payant)</div></div>
+                        <div class="sign-card"><div class="sign-symbol">⏱️🅿️</div><div class="sign-desc">توقف بقرص (Disque)</div></div>
+                        <div class="sign-card"><div class="sign-symbol">♿🅿️</div><div class="sign-desc">موقف ذوي الاحتياجات الخاصة</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🏥</div><div class="sign-desc">مستشفى/مركز إغاثة</div></div>
+                        <div class="sign-card"><div class="sign-symbol">⛽</div><div class="sign-desc">محطة وقود</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🍽️</div><div class="sign-desc">مطعم</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🏨</div><div class="sign-desc">فندق</div></div>
+                    </div>
+                    <h4>➡️ علامات الاتجاه</h4>
+                    <div class="signs-grid">
+                        <div class="sign-card"><div class="sign-symbol">🟦 الرباط 50km</div><div class="sign-desc">علامة اتجاه (طريق سيار)</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🟩 مراكش 30km</div><div class="sign-desc">علامة اتجاه (طريق وطني)</div></div>
+                        <div class="sign-card"><div class="sign-symbol">⬅️ الدار البيضاء</div><div class="sign-desc">علامة تشوير مسبق</div></div>
+                    </div>
+                    <h4>📌 اللويحات</h4>
+                    <div class="signs-grid">
+                        <div class="sign-card"><div class="sign-symbol">📏 150m</div><div class="sign-desc">لويحة مسافة</div></div>
+                        <div class="sign-card"><div class="sign-symbol">➡️ 1km</div><div class="sign-desc">لويحة امتداد</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🚚</div><div class="sign-desc">لويحة فئة (شاحنات فقط)</div></div>
+                    </div>
+                `},
+                { title: "التشوير الأفقي", content: `
+                    <h4>📌 الخطوط الطولية (على الأرض)</h4>
+                    <div class="signs-grid">
+                        <div class="sign-card"><div class="sign-symbol">━━━━</div><div class="sign-desc">خط متصل ← ممنوع التجاوز</div></div>
+                        <div class="sign-card"><div class="sign-symbol">━ ━ ━</div><div class="sign-desc">خط متقطع متباعد ← التجاوز مسموح</div></div>
+                        <div class="sign-card"><div class="sign-symbol">╌╌╌</div><div class="sign-desc">خط متقطع متقارب ← تحذير من خط متصل قدام</div></div>
+                        <div class="sign-card"><div class="sign-symbol">══</div><div class="sign-desc">خط مزدوج ← حسب المسلك</div></div>
+                    </div>
+                    <h4>🏁 الخطوط العرضية والعلامات التكميلية</h4>
+                    <div class="signs-grid">
+                        <div class="sign-card"><div class="sign-symbol">▬▬▬</div><div class="sign-desc">خط متصل عرضي ← قف هنا</div></div>
+                        <div class="sign-card"><div class="sign-symbol">▬ ▬ ▬</div><div class="sign-desc">خط متقطع عرضي ← أعط حق الأسبقية</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🟦⬜🟦</div><div class="sign-desc">ممر راجلين (أشرطة بيضاء)</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🟥⬜🟥⬜</div><div class="sign-desc">مربعات شطرنج ← مسلك إغاثة للمركبات المعطوبة</div></div>
+                        <div class="sign-card"><div class="sign-symbol">💰 PAYANT</div><div class="sign-desc">توقف بلاكر</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🚕 TAXI</div><div class="sign-desc">للسيارات الأجرة فقط</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🟨〰️</div><div class="sign-desc">خط أصفر متعرج ← للحافلات فقط</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🟨 LIVRAISON</div><div class="sign-desc">للشحن والتفريغ فقط</div></div>
+                    </div>
+                `},
+                { title: "الإشارات الضوئية وإشارات أعوان المرور", content: `
+                    <h4>🚦 الإشارات الضوئية (السيمافور)</h4>
+                    <div class="signs-grid">
+                        <div class="sign-card"><div class="sign-symbol">🟢</div><div class="sign-desc">أخضر ← يسمح بالمرور بعد التأكد من خلو الطريق</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🟡</div><div class="sign-desc">أصفر ← استعد للوقوف (يعلن عن اقتراب الأحمر)</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🔴</div><div class="sign-desc">أحمر ← ممنوع المرور، يجب الوقوف</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🔴💡</div><div class="sign-desc">أحمر وامض ← "قف" (سكة حديدية، جسر متحرك)</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🟡💡</div><div class="sign-desc">أصفر وامض ← "انتبه، خفف السرعة" (مكان خطر)</div></div>
+                    </div>
+                    <div class="info-box">💡 <strong>استثناء الضوء الأصفر:</strong> يمكن تجاوزه إذا كانت المركبة قريبة جداً والتوقف المفاجئ قد يسبب حادثاً.</div>
+                    <h4>👮 إشارات أعوان المرور (الشرطي/الدركي)</h4>
+                    <div class="signs-grid">
+                        <div class="sign-card"><div class="sign-symbol">✋</div><div class="sign-desc">اليد مرفوعة عمودياً ← "قف" لكل مستعملي الطريق</div></div>
+                        <div class="sign-card"><div class="sign-symbol">➡️⬅️</div><div class="sign-desc">اليد ممدودة أفقياً ← "توقف" للقادمين من اتجاهات اليدين</div></div>
+                        <div class="sign-card"><div class="sign-symbol">⬇️🔴</div><div class="sign-desc">إنزال اليد + ضوء أحمر ← "قف" للسائقين المقابلين/الخلفيين</div></div>
+                    </div>
+                    <div class="warning-box">⚠️ <strong>أولوية إشارات أعوان المرور:</strong> لها الأولوية المطلقة على جميع أنواع التشوير الأخرى (حتى الإشارات الضوئية).</div>
+                `}
+            ]
+        },
+        {
+            id: "module2", title: "الوحدة 2: خصائص الطريق والظروف الخاصة",
+            subModules: [
+                { title: "خصائص مختلف أنواع الطريق", content: `
+                    <h4>🛣️ أنواع الطرق والسرعات القصوى</h4>
+                    <div class="signs-grid">
+                        <div class="sign-card"><div class="sign-symbol">🛣️🟦</div><div class="sign-desc"><strong>طريق سيار (Autoroute):</strong> أداء، 120 كلم/س، صوى زرقاء مربعة</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🏞️🟩</div><div class="sign-desc"><strong>طريق سريع (Route express):</strong> مجاناً، سرعة أقل</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🇲🇦🔴</div><div class="sign-desc"><strong>طريق وطنية:</strong> 100 كلم/س، صوى حمراء</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🗺️🟡</div><div class="sign-desc"><strong>طريق جهوية:</strong> صوى صفراء</div></div>
+                        <div class="sign-card"><div class="sign-symbol">📍🔵</div><div class="sign-desc"><strong>طريق إقليمية:</strong> صوى زرقاء</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🌲🟢</div><div class="sign-desc"><strong>طريق غابوية:</strong> صوى خضراء</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🏙️50</div><div class="sign-desc"><strong>داخل التجمعات العمرانية:</strong> 50 كلم/س</div></div>
+                    </div>
+                    <div class="info-box">💡 <strong>ملخص السرعات القصوى:</strong> طريق سيار=120، وطني=100، داخل المدينة=50، فترة الاختبار تنقص بـ10-20 كلم/س.</div>
+                `},
+                { title: "ملاءمة السياقة في الظروف الخاصة للإضاءة", content: `
+                    <h4>🌙 السياقة ليلاً وأضواء المركبة</h4>
+                    <div class="signs-grid">
+                        <div class="sign-card"><div class="sign-symbol">💡150m</div><div class="sign-desc"><strong>أضواء الوضع:</strong> 150 م، للوقوف أو فالمدينة المضاءة</div></div>
+                        <div class="sign-card"><div class="sign-symbol">💡30m</div><div class="sign-desc"><strong>أضواء التقابل:</strong> 30 م، ليلاً داخل وخارج المدينة إذا القارعة مضاءة</div></div>
+                        <div class="sign-card"><div class="sign-symbol">💡100m</div><div class="sign-desc"><strong>أضواء الطريق:</strong> 100 م، خارج المدينة ليلاً إذا القارعة غير مضاءة. ممنوعة عند التقابل أو السياقة خلف مركبة أخرى</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🌫️💡</div><div class="sign-desc"><strong>أضواء الضباب:</strong> فقط فحالة ضباب، ثلج، أمطار قوية</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🛑💡</div><div class="sign-desc"><strong>أضواء الحصر (Stop):</strong> حمراء خلفية، لتنبيه السائقين بالخلف</div></div>
+                        <div class="sign-card"><div class="sign-symbol">⚠️💡</div><div class="sign-desc"><strong>أضواء التحذير (Warns):</strong> الـ4 كلينو مع بعضهم → خطر (عطب، حادثة، سرعة بطيئة)</div></div>
+                    </div>
+                    <div class="tip-box">⚠️ <strong>التعامل مع الإبهار (Éblouissement):</strong> أنظر للحاشية اليمنى للقارعة، نبّه السائق الآخر، خفف السرعة أو قف.</div>
+                `},
+                { title: "ملاءمة السياقة في الظروف المناخية السيئة", content: `
+                    <h4>🌧️ السياقة في المطر</h4>
+                    <ul><li>خفف السرعة، زد مسافة الأمان، لا تحصر فجأة.</li><li>خطر الانزلاق المائي (Aquaplaning) عند السرعة العالية والإطارات التالفة.</li><li>أضواء التقابل أو أضواء الضباب.</li></ul>
+                    <h4>❄️ السياقة في الثلج</h4>
+                    <ul><li>لا تحصر أبداً إذا زلقت! استعمل <strong>حصار المحرك (Frein moteur)</strong> (نقص السرعة بالعتاد).</li><li>أزل الثلج من النوافذ والسقف والأضواء قبل الانطلاق.</li><li>أضواء التقابل أو أضواء الضباب.</li></ul>
+                    <h4>💨 السياقة في الرياح القوية</h4>
+                    <ul><li>خفف السرعة، امسك المقود بقوة.</li><li>انتبه عند الخروج من النفق أو بعد تجاوز شاحنة.</li><li>المقبض الهوائي (Manche à air) يبين قوة الرياح.</li></ul>
+                    <h4>🌫️ السياقة في الضباب</h4>
+                    <ul><li>إذا كثيف → قف في مكان آمن.</li><li>خفف السرعة (50 كلم/س)، استعمل الخطوط البيضاء على الأرض.</li><li>أضواء التقابل + أضواء الضباب (ممنوع أضواء الطريق).</li></ul>
+                `},
+                { title: "ملاءمة السياقة في المنعرجات والعقبة والمنحدر", content: `
+                    <h4>🔺 المنعرجات الخطيرة</h4>
+                    <ol><li>اكتشف المنعرج وحدد خطورته.</li><li>خفف السرعة قبل المنعرج.</li><li>زد قليلاً وسط المنعرج لتخفيف <strong>القوة النابذة (Force centrifuge)</strong> (تخرج بسهولة).</li></ol>
+                    <div class="warning-box">⚠️ القوة النابذة تزداد خطراً كلما زادت السرعة وزاد وزن المركبة وصغر شعاع المنعرج.</div>
+                    <h4>⛰️ العقبة (الطلعة – Montée)</h4>
+                    <ul><li>استعمل <strong>العتاد القصير (1 أو 2)</strong> لمنح قوة دفع أكبر.</li><li>زد مسافة الأمان مع الشاحنات (كاتعاني ف الطلعة).</li></ul>
+                    <h4>⛰️⬇️ المنحدر (النزلة – Descente)</h4>
+                    <ul><li><strong>❌ ممنوع منعاً باتاً "نقطة الحياد" (العتاد المحايد – Point mort)</strong> في المنحدر → تفقد التحكم وتطول مسافة الحصر.</li><li>استعمل <strong>العتاد القصير</strong> لاستخدام <strong>حصار المحرك (Frein moteur)</strong>.</li></ul>
+                `}
+            ]
+        },
+        {
+            id: "module3", title: "الوحدة 3: قواعد السير والأسبقية",
+            subModules: [
+                { title: "قواعد السير الأساسية", content: `
+                    <h4>📌 وضعية العربات على الطريق</h4>
+                    <ul><li>يجب السير في <strong>أقصى اليمين</strong> (ما عدا التجاوز).</li><li>استعمال المسالك: المسلك الأيمن للسرعة العادية، الأيسر للتجاوز.</li><li>تغيير الاتجاه: استعمل إشارات الاتجاه مسبقاً.</li><li>الرجوع للخلف: ممنوع إلا للضرورة القصوى وبحذر شديد.</li><li>نصف الدورة (U-turn): ممنوعة حيث تمنعها العلامات أو الرؤية غير كافية.</li></ul>
+                `},
+                { title: "الأسبقية (الأولوية) في التقاطعات", content: `
+                    <h4>🚦 قواعد الأولوية</h4>
+                    <div class="signs-grid">
+                        <div class="sign-card"><div class="sign-symbol">➡️⬅️</div><div class="sign-desc"><strong>قاعدة "الأولوية لليمين":</strong> في حالة عدم وجود علامات، للقادم من اليمين الأولوية</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🛑</div><div class="sign-desc"><strong>علامة "قف" (STOP):</strong> توقف كامل، ثم أعط الأولوية</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🔻</div><div class="sign-desc"><strong>علامة "إعطاء حق الأسبقية":</strong> مثلث مقلوب، أعط الأولوية، توقف إذا ضروري</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🟨⬇️</div><div class="sign-desc"><strong>الطريق الأولوي (المعين الأصفر):</strong> لك الأولوية في جميع التقاطعات</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🔄</div><div class="sign-desc"><strong>روندبوان (الدوار):</strong> أعط الأولوية للعربات التي تسير داخله</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🚶</div><div class="sign-desc"><strong>الأولوية للراجلين:</strong> في ممرات الراجلين</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🚑🚓🚒</div><div class="sign-desc"><strong>الأولوية للسيارات المستعجلة:</strong> إسعاف، شرطة، إطفاء بأضوائها وصافراتها</div></div>
+                    </div>
+                `}
+            ]
+        },
+        {
+            id: "module4", title: "الوحدة 4: السرعة والتجاوز",
+            subModules: [
+                { title: "السرعة ومسافة الأمان", content: `
+                    <h4>📊 السرعات القصوى (للسائقين العاديين)</h4>
+                    <div class="signs-grid">
+                        <div class="sign-card"><div class="sign-symbol">🏙️50</div><div class="sign-desc">داخل المدينة: 50 كلم/س</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🛣️100</div><div class="sign-desc">الطريق الوطنية: 100 كلم/س</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🛣️120</div><div class="sign-desc">الطريق السيار: 120 كلم/س</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🔰</div><div class="sign-desc">فترة الاختبار: تنقص بـ 10-20 كلم/س عن العادي</div></div>
+                    </div>
+                    <h4>📏 مسافة الأمان (قاعدة ثانيتين)</h4>
+                    <p>يجب ترك مسافة كافية (سنتين على الأقل) لتتمكن من التوقف في حالة الخطر. في المطر والثلج تتضاعف المسافة.</p>
+                    <h4>🧮 مسافات السياقة</h4>
+                    <ul><li><strong>مسافة رد الفعل:</strong> = السرعة × 3 / 10 (تقريباً)</li><li><strong>مسافة الحصر:</strong> = (السرعة × السرعة) / (2 × معامل الاحتكاك)</li><li><strong>مسافة التوقف:</strong> = مسافة رد الفعل + مسافة الحصر</li></ul>
+                `},
+                { title: "قواعد التجاوز", content: `
+                    <h4>🚗 قواعد التجاوز</h4>
+                    <ul><li><strong>التجاوز من اليسار</strong> هو القاعدة.</li><li><strong>التجاوز من اليمين ممنوع</strong> إلا في حالات محدودة (مسلك إضافي لليمين).</li><li>يجب التأكد من خلو الطريق، استعمال إشارة الاتجاه، إشارة ضوئية (بالتناوب) لتحذير من أمامك.</li><li><strong>التجاوز ممنوع:</strong> في المنعرجات، أعلى القناطر، معابر السكة الحديدية، ممرات الراجلين، عندما تكون الرؤية غير كافية، إذا كانت المركبة أمامك تشير إلى أنها ستتجاوز.</li><li>المركبة المتجاوزة يجب ألا تزيد السرعة، وقد تساعد في التجاوز بالانحراف قليلاً.</li></ul>
+                `}
+            ]
+        },
+        {
+            id: "module5", title: "الوحدة 5: الوقوف والتوقف",
+            subModules: [
+                { title: "قواعد الوقوف والتوقف", content: `
+                    <h4>📌 الفرق بين التوقف والوقوف</h4>
+                    <ul><li><strong>التوقف (Arrêt):</strong> فترة قصيرة لصعود أو نزول الركاب (السائق يبقى في المركبة).</li><li><strong>الوقوف (Stationnement):</strong> فترة طويلة (السائق يغادر المركبة).</li></ul>
+                    <h4>⛔ الأماكن الممنوعة فيها التوقف والوقوف</h4>
+                    <div class="signs-grid">
+                        <div class="sign-card"><div class="sign-symbol">🚫🟦</div><div class="sign-desc">على ممرات الراجلين</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🚫🌉</div><div class="sign-desc">على قناطر الجسور والأنفاق</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🚫🟥⬜</div><div class="sign-desc">على مسالك الإغاثة (مربعات شطرنج)</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🚫🏥</div><div class="sign-desc">أمام مداخل المنشآت العمومية والإسعافية</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🚫🔄</div><div class="sign-desc">في المنعرجات وأعلى القناطر</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🚫🛣️</div><div class="sign-desc">في الطريق السيار: التوقف ممنوع إلا في الباحات المخصصة</div></div>
+                    </div>
+                    <h4>🅿️ أنواع المواقف</h4>
+                    <div class="signs-grid">
+                        <div class="sign-card"><div class="sign-symbol">🅿️⬜</div><div class="sign-desc">موقف حر (مجاني)</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🅿️⏱️</div><div class="sign-desc">موقف بالقرص (Disque) – مدة محدودة</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🅿️💰</div><div class="sign-desc">موقف بلاكر (Payant)</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🅿️♿</div><div class="sign-desc">موقف خاص بذوي الاحتياجات الخاصة</div></div>
+                    </div>
+                `}
+            ]
+        },
+        {
+            id: "module6", title: "الوحدة 6: حوادث السير",
+            subModules: [
+                { title: "السلوك في حالة حادثة", content: `
+                    <h4>🆘 الإجراءات الواجب اتباعها فاش كاتوقع حادثة</h4>
+                    <ol><li><strong>حماية المكان:</strong> تشغيل أضواء التحذير (Warns)، وضع المثلث العاكس (على بعد 30-50 م).</li><li><strong>الإسعافات الأولية:</strong> تأكد من سلامة المصابين، لا تحركهم إلا للضرورة القصوى.</li><li><strong>الإبلاغ:</strong> اتصل بالإسعاف (15)، الشرطة (19)، الدرك (177).</li><li><strong>المحضر الصديق (Constat amiable):</strong> ملء النموذج مع السائق الآخر (الجهة، المانومتر، الرسوم...).</li></ol>
+                    <h4>📝 العقوبات والغرامات</h4>
+                    <ul><li>غرامات مالية حسب نوع المخالفة.</li><li>نقاط تخفض من رخصة السياقة.</li><li>في الحالات الخطيرة: توقيف الرخصة، مصادرة المركبة، عقوبات سالبة للحرية.</li></ul>
+                `}
+            ]
+        },
+        {
+            id: "module7", title: "الوحدة 7: السياقة والسلامة",
+            subModules: [
+                { title: "عوامل الخطر", content: `
+                    <h4>😴 الإرهاق والنعاس</h4>
+                    <ul><li>توقف كل ساعتين أو 200 كلم.</li><li>علامات النعاس: ثقل العينين، التثاؤب، الخروج عن المسار.</li></ul>
+                    <h4>🍺 الكحول والمخدرات</h4>
+                    <ul><li>نسبة الكحول الممنوعة: 0.2 غ/ل للدم (أقل من 0.5 غ/ل للسائقين الجدد).</li><li>عقوبات شديدة لمن يقود تحت تأثير المخدرات.</li></ul>
+                    <h4>📱 استعمال الهاتف</h4>
+                    <ul><li>ممنوع استعمال الهاتف باليد أثناء السياقة (يمكن بالبلوتوث أو السماعة).</li><li>غرامات ونقاط.</li></ul>
+                    <h4>🪑 أحزمة الأمان والخوذة</h4>
+                    <ul><li>إجبارية للسائق وجميع الركاب (أمامي وخلفي).</li><li>الخوذة إجبارية للدراجات النارية والدراجات بمحرك.</li></ul>
+                `}
+            ]
+        },
+        {
+            id: "module8", title: "الوحدة 8: وثائق المركبة",
+            subModules: [
+                { title: "الوثائق الإجبارية", content: `
+                    <h4>📄 الوثائق الواجب توفرها في المركبة</h4>
+                    <div class="signs-grid">
+                        <div class="sign-card"><div class="sign-symbol">🪪</div><div class="sign-desc"><strong>رخصة السياقة (Permis):</strong> صالحة، مطابقة للصنف</div></div>
+                        <div class="sign-card"><div class="sign-symbol">📄</div><div class="sign-desc"><strong>شهادة التسجيل (Carte grise):</strong> أصلية، بياناتها صحيحة</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🟢</div><div class="sign-desc"><strong>شهادة التأمين (Carte verte):</strong> سارية المفعول</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🔧</div><div class="sign-desc"><strong>شهادة الفحص التقني:</strong> للمركبات التي يتطلبها القانون (أكثر من 4 سنوات)</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🆔</div><div class="sign-desc"><strong>بطاقة التعريف الوطنية:</strong> للسائق</div></div>
+                    </div>
+                    <div class="warning-box">⚠️ <strong>عقوبات عدم توفر الوثائق:</strong> غرامات مالية، توقيف المركبة، سحب النقاط.</div>
+                `}
+            ]
+        },
+        {
+            id: "module9", title: "الوحدة 9: رخصة السياقة",
+            subModules: [
+                { title: "أنواع الرخص وشروط الحصول عليها", content: `
+                    <h4>📌 أصناف رخصة السياقة في المغرب</h4>
+                    <div class="signs-grid">
+                        <div class="sign-card"><div class="sign-symbol">🏍️ A</div><div class="sign-desc">الدراجات النارية</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🚗 B</div><div class="sign-desc">السيارات (وزن ≤ 3.5 طن، مقاعد ≤ 9)</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🚛 C</div><div class="sign-desc">الشاحنات</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🚌 D</div><div class="sign-desc">حافلات النقل العمومي</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🚛🚛 E</div><div class="sign-desc">القاطرات والمقطورات</div></div>
+                    </div>
+                    <h4>⏱️ فترة الاختبار (Période probatoire)</h4>
+                    <ul><li>مدة 3 سنوات (أو سنتين للمتميزين).</li><li>رصيد النقط: 8 نقاط.</li><li>السرعة القصوى أقل بـ 10-20 كلم/س.</li><li>نسبة الكحول أقل (0.2 غ/ل).</li></ul>
+                    <h4>📈 نظام النقط (Permis à points)</h4>
+                    <ul><li>الرصيد العادي: 12 نقطة.</li><li>يتم خصم النقط عند ارتكاب مخالفات (سرعة، تجاوز ممنوع، هاتف...).</li><li>يمكن استرجاع النقط بتكوين إضافي أو بمرور الوقت دون مخالفات.</li></ul>
+                `}
+            ]
+        },
+        {
+            id: "module10", title: "الوحدة 10: البيئة والاقتصاد في الوقود",
+            subModules: [
+                { title: "السياقة البيئية (Éco-conduite)", content: `
+                    <h4>🌱 نصائح لتوفير الوقود وتقليل التلوث</h4>
+                    <div class="signs-grid">
+                        <div class="sign-card"><div class="sign-symbol">🚗💨</div><div class="sign-desc">تجنب التسارع والفرملة المفاجئة</div></div>
+                        <div class="sign-card"><div class="sign-symbol">⚙️⬆️</div><div class="sign-desc">استخدم العتاد العالي مبكراً (لتقليل استهلاك المحرك)</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🔄💨</div><div class="sign-desc">حافظ على سرعة ثابتة (استعمل مثبت السرعة فالأوتوروت)</div></div>
+                        <div class="sign-card"><div class="sign-symbol">⏱️🛑</div><div class="sign-desc">أطفئ المحرك في التوقفات الطويلة (أكثر من دقيقة)</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🛞⬆️</div><div class="sign-desc">تأكد من ضغط العجلات (العجلات المنخفضة تزيد الاستهلاك)</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🎒❌</div><div class="sign-desc">أزل الحمولة غير الضرورية</div></div>
+                        <div class="sign-card"><div class="sign-symbol">🚌🚲</div><div class="sign-desc">استعمل وسائل النقل الجماعي أو الدراجات كلما أمكن</div></div>
+                    </div>
+                `}
+            ]
+        }
+    ];
+
+    function buildSidebar() {
+        const sidebar = document.getElementById('sidebarList');
+        sidebar.innerHTML = '';
+        modulesData.forEach(m => {
+            const li = document.createElement('li');
+            li.innerHTML = `<a href="#${m.id}" class="module-link">📌 ${m.title}</a>`;
+            sidebar.appendChild(li);
+            m.subModules.forEach(s => {
+                const subId = `${m.id}_${s.title.replace(/\s/g, '_')}`;
+                const subLi = document.createElement('li');
+                subLi.innerHTML = `<a href="#${subId}" style="padding-right: 1.2rem;">▫️ ${s.title}</a>`;
+                sidebar.appendChild(subLi);
+            });
+        });
+    }
+
+    function buildContent() {
+        const main = document.getElementById('mainContent');
+        main.innerHTML = '';
+        modulesData.forEach(m => {
+            const modDiv = document.createElement('div'); modDiv.className = 'module'; modDiv.id = m.id;
+            modDiv.innerHTML = `<h2 class="module-title">${m.title}</h2>`;
+            m.subModules.forEach(s => {
+                const subId = `${m.id}_${s.title.replace(/\s/g, '_')}`;
+                const subDiv = document.createElement('div'); subDiv.className = 'sub-module'; subDiv.id = subId;
+                subDiv.innerHTML = `<h3 class="sub-title">📖 ${s.title}</h3><div class="lesson-content">${s.content}</div>`;
+                modDiv.appendChild(subDiv);
+            });
+            main.appendChild(modDiv);
+        });
+    }
+
+    function setupSearch() {
+        const input = document.getElementById('searchInput');
+        input.addEventListener('input', function() {
+            const term = this.value.trim().toLowerCase();
+            const all = document.querySelectorAll('.sub-module');
+            if (!term) { all.forEach(s => s.style.display = ''); return; }
+            all.forEach(s => { s.style.display = s.innerText.toLowerCase().includes(term) ? '' : 'none'; });
+        });
+    }
+
+    function setupFont() {
+        let size = 16;
+        const content = document.querySelector('.content');
+        document.getElementById('fontPlus').onclick = () => { size = Math.min(size+2, 28); content.style.fontSize = size+'px'; };
+        document.getElementById('fontMinus').onclick = () => { size = Math.max(size-2, 12); content.style.fontSize = size+'px'; };
+    }
+
+    function setupDarkMode() {
+        const btn = document.getElementById('darkModeToggle');
+        btn.onclick = () => {
+            document.body.classList.toggle('dark-mode');
+            btn.textContent = document.body.classList.contains('dark-mode') ? '☀️ النهاري' : '🌙 الليلي';
+        };
+    }
+
+    buildSidebar();
+    buildContent();
+    setupSearch();
+    setupFont();
+    setupDarkMode();
+</script>
+</body>
+</html>
