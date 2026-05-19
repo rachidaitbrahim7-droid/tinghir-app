@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="مدرسة تنغير - أكبر منصة لتعليم قانون السير بالمغرب 2026 بالدارجة المغربية، 500+ سؤال تفاعلي مع الصور">
+    <title>مدرسة تنغير | 500+ سؤال مع الصور - امتحان الكود 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap');
+
+        body { font-family: 'Cairo', 'Segoe UI', system-ui, sans-serif; background: #0B0B12; }
+       .bg-dark-card { background: #13131F; }
+       .gold-grad { background: linear-gradient(135deg, #F5B041, #F39C12); }
+       .option-btn { transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1); }
+       .option-btn:active { transform: scale(0.97); }
+       .module-card { transition: all 0.3s ease; cursor: pointer; }
+       .module-card:hover { transform: translateY(-5px); border-color: #F5B041; }
+       .lesson-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; }
+       .lesson-content.open { max-height: 2000px; transition: max-height 0.6s ease-in; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #1E1E2A; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: #F39C12; border-radius: 10px; }
+       .image-preview { transition: all 0.3s ease; }
+       .image-preview:hover { transform: scale(1.05); }
+       .edit-modal { animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+
+       .correct-answer { background: #22c55e!important; border-color: #22c55e!important; }
+       .wrong-answer { background: #ef4444!important; border-color: #ef4444!important; }
+    </style>
+</head>
+<body class="text-gray-200">
+    <div id="appRoot" class="relative min-h-screen">
+
+        <!-- شريط التنقل -->
+        <nav class="sticky top-0 z-50 bg-black/90 backdrop-blur-lg border-b border-yellow-600/30 shadow-md">
+            <div class="max-w-7xl mx-auto px-5 py-4 flex justify-between items-center flex-wrap gap-3">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-car-side text-3xl text-yellow-500"></i>
+                    <span class="font-extrabold text-2xl tracking-tight text-yellow-400">مدرسة <span class="text-white">تنغير</span></span>
+                </div>
+                <div class="flex gap-2 flex-wrap">
+                    <button onclick="navigateTo('home')" class="px-4 py-2 rounded-xl text-sm font-semibold hover:bg-yellow-600/20 transition"><i class="fa-solid fa-house"></i> <span class="hidden sm:inline">الرئيسية</span></button>
+                    <button onclick="navigateTo('modules')" class="px-4 py-2 rounded-xl text-sm font-semibold hover:bg-yellow-600/20 transition"><i class="fa-solid fa-book-open"></i> <span class="hidden sm:inline">الدروس</span></button>
+                    <button onclick="navigateTo('quiz')" class="px-4 py-2 rounded-xl text-sm font-semibold hover:bg-yellow-600/20 transition"><i class="fa-solid fa-circle-question"></i> <span class="hidden sm:inline">500+ سؤال</span></button>
+                    <button onclick="navigateTo('admin')" class="px-4 py-2 rounded-xl text-sm font-semibold bg-yellow-600/20 border-yellow-500/40"><i class="fa-solid fa-gear"></i> <span class="hidden sm:inline">إدارة</span></button>
+                </div>
+            </div>
+        </nav>
+
+        <div class="max-w-6xl mx-auto px-4 py-8 transition-all duration-300">
+
+            <!-- الصفحة الرئيسية -->
+            <div id="homePage" class="space-y-8">
+                <div class="relative rounded-3xl overflow-hidden bg-gradient-to-r from-black/70 to-purple-900/20 shadow-2xl border-yellow-500/20 p-8 md:p-12 text-center">
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1568605117036-5fe5e7fa0ac7?w=1600')] bg-cover bg-center opacity-20"></div>
+                    <div class="relative">
+                        <h1 class="text-5xl md:text-7xl font-black text-yellow-400 drop-shadow-lg">500+ سؤال <span class="text-white">مع الصور</span>! 🚗</h1>
+                        <p class="text-xl md:text-2xl mt-6 text-gray-200">دروس شاملة + <strong class="text-yellow-400">500+ سؤال تفاعلي</strong> بالدارجة + صوت + صور</p>
+                        <p class="text-md text-yellow-500/80 mt-2">📸 كل سؤال فيه صورة توضيحية للعلامات والمواقف</p>
+                        <div class="flex flex-wrap gap-4 justify-center mt-10">
+                            <button onclick="navigateTo('modules')" class="gold-grad text-black font-bold text-xl px-8 py-4 rounded-2xl shadow-xl hover:scale-105 transition">📖 اقرأ الدروس</button>
+                            <button onclick="navigateTo('quiz')" class="bg-yellow-600/80 hover:bg-yellow-600 text-white font-bold text-xl px-8 py-4 rounded-2xl shadow-xl hover:scale-105 transition">🎯 ابدأ الـ 500+ سؤال</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div class="bg-dark-card rounded-2xl p-6 text-center border-white/5"><i class="fa-regular fa-clock text-4xl text-yellow-400"></i><h3 class="text-2xl font-bold mt-3">8 وحدات</h3><p>دروس كاملة ومفصلة</p></div>
+                    <div class="bg-dark-card rounded-2xl p-6 text-center border-white/5"><i class="fa-solid fa-image text-4xl text-yellow-400"></i><h3 class="text-2xl font-bold mt-3">صور توضيحية</h3><p>كل سؤال مع صورة</p></div>
+                    <div class="bg-dark-card rounded-2xl p-6 text-center border-white/5"><i class="fa-solid fa-database text-4xl text-yellow-400"></i><h3 class="text-2xl font-bold mt-3">500+ سؤال</h3><p>تغطية شاملة</p></div>
+                    <div class="bg-dark-card rounded-2xl p-6 text-center border-white/5"><i class="fa-solid fa-graduation-cap text-4xl text-yellow-400"></i><h3 class="text-2xl font-bold mt-3">نظام النقط</h3><p>تعرف على العقوبات</p></div>
+                </div>
+            </div>
+
+            <!-- الوحدات التعليمية -->
+            <div id="modulesPage" class="hidden">
+                <h2 class="text-3xl font-bold mb-6 text-center"><i class="fa-solid fa-book-open text-yellow-400"></i> الدروس الكاملة</h2>
+                <p class="text-center text-gray-400 mb-8">اضغط على أي وحدة باش تظهر فيها الدرس كامل</p>
+                <div class="space-y-5">
+                    <div class="bg-dark-card rounded-2xl border-white/10 overflow-hidden">
+                        <div onclick="toggleLesson(1)" class="module-card p-5 flex justify-between items-center bg-gradient-to-r from-yellow-900/20 to-transparent">
+                            <div class="flex gap-4 items-center"><i class="fa-regular fa-hand-peace text-3xl text-yellow-400"></i><div><h3 class="text-xl font-bold">الوحدة 1: علامات الخطر (التحذيرية)</h3><p class="text-gray-400 text-sm">شكلها مثلث أحمر - كتحذر من خطر قدام</p></div></div>
+                            <i id="icon-1" class="fa-solid fa-chevron-down text-yellow-400 transition-transform"></i>
+                        </div>
+                        <div id="lesson-1" class="lesson-content px-5 pb-5"><div class="border-t border-white/10 pt-4 space-y-3 text-gray-300"><p>✅ العلامة المثلثة كتعني خطر قدام، خاصك تخف السرعة.</p><p>✅ انتباه فيراج: نقص السرعة ونكراطي الفيتاس.</p></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- صفحة التدريب -->
+            <div id="quizPage" class="hidden">
+                <div class="bg-dark-card rounded-3xl overflow-hidden shadow-strong border-white/10">
+                    <div class="relative h-80 md:h-96 bg-black/50">
+                        <img id="quizImage" class="w-full h-full object-cover" src="" alt="صورة السؤال">
+                        <div class="absolute bottom-4 left-4 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full text-xs"><i class="fa-regular fa-image"></i> صورة توضيحية</div>
+                        <div class="absolute top-4 right-4 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full text-xs"><i class="fa-regular fa-clock"></i> <span id="questionCounter">1</span>/<span id="totalQuestionsCount">0</span></div>
+                    </div>
+                    <div class="p-6 md:p-8">
+                        <div class="w-full h-2 bg-gray-800 rounded-full mb-6 overflow-hidden"><div id="progressFill" class="h-full bg-yellow-400 w-0 transition-all duration-300"></div></div>
+                        <h2 id="questionText" class="text-2xl md:text-3xl font-bold leading-relaxed text-center my-6">جاري تحميل الأسئلة...</h2>
+                        <div id="optionsContainer" class="space-y-3 mb-6"></div>
+                        <div class="flex flex-wrap gap-3">
+                            <button id="speakBtn" class="flex-1 bg-emerald-700 hover:bg-emerald-600 py-3 rounded-xl font-bold flex items-center justify-center gap-2"><i class="fa-solid fa-volume-high"></i> اسمع السؤال</button>
+                            <button id="nextBtnQuiz" class="flex-1 gold-grad text-black py-3 rounded-xl font-bold flex items-center justify-center gap-2"><i class="fa-solid fa-arrow-right"></i> السؤال التالي</button>
+                        </div>
+                        <div id="feedbackMsg" class="mt-5 text-center text-lg font-semibold"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- لوحة الإدارة -->
+            <div id="adminPage" class="hidden">
+                <div class="flex flex-wrap justify-between items-center gap-4 mb-6">
+                    <h2 class="text-3xl font-bold"><i class="fa-solid fa-screwdriver-wrench text-yellow-400"></i> إدارة الأسئلة</h2>
+                    <div class="flex gap-2">
+                        <button onclick="exportQuestions()" class="bg-green-700 px-4 py-2 rounded-xl"><i class="fa-regular fa-floppy-disk"></i> تصدير</button>
+                        <button onclick="resetWrongBank()" class="bg-red-800/60 px-4 py-2 rounded-xl"><i class="fa-regular fa-trash-can"></i> مسح الأخطاء</button>
+                        <button onclick="showAddQuestionForm()" class="bg-yellow-600 px-4 py-2 rounded-xl"><i class="fa-solid fa-plus"></i> سؤال جديد</button>
+                    </div>
+                </div>
+                <div class="grid lg:grid-cols-2 gap-6">
+                    <div class="bg-dark-card p-4 rounded-2xl border-white/10">
+                        <h3 class="text-xl font-bold mb-3"><i class="fa-solid fa-database text-yellow-400"></i> بنك الأسئلة (<span id="adminTotalQ">0</span>)</h3>
+                        <div id="questionsAdminList" class="max-h-96 overflow-y-auto space-y-2"></div>
+                    </div>
+                    <div class="bg-dark-card p-4 rounded-2xl border-white/10">
+                        <h3 class="text-xl font-bold mb-3"><i class="fa-regular fa-clock"></i> الأخطاء (<span id="wrongCountSpan">0</span>)</h3>
+                        <div id="wrongQuestionsList" class="max-h-96 overflow-y-auto space-y-2"></div>
+                    </div>
+                </div>
+
+                <!-- Modal إضافة سؤال -->
+                <div id="questionModal" class="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-50 hidden">
+                    <div class="bg-zinc-900 p-6 rounded-2xl w-full max-w-lg mx-4 border-yellow-500/50 max-h-[90vh] overflow-y-auto">
+                        <h3 class="text-2xl font-bold mb-4 flex items-center gap-2"><i class="fa-solid fa-image text-yellow-400"></i> إضافة سؤال جديد</h3>
+                        <input id="newQText" class="w-full bg-zinc-800 p-3 rounded-lg mb-2" placeholder="نص السؤال">
+                        <input id="newOpt1" class="w-full bg-zinc-800 p-3 rounded-lg mb-2" placeholder="الخيار 1">
+                        <input id="newOpt2" class="w-full bg-zinc-800 p-3 rounded-lg mb-2" placeholder="الخيار 2">
+                        <input id="newOpt3" class="w-full bg-zinc-800 p-3 rounded-lg mb-2" placeholder="الخيار 3">
+                        <input id="newOpt4" class="w-full bg-zinc-800 p-3 rounded-lg mb-2" placeholder="الخيار 4">
+                        <select id="newCorrect" class="w-full bg-zinc-800 p-3 rounded-lg mb-2"><option value="0">الخيار 1 صحيح</option><option value="1">الخيار 2 صحيح</option><option value="2">الخيار 3 صحيح</option><option value="3">الخيار 4 صحيح</option></select>
+                        <label class="text-sm text-gray-400 mb-1 block">رابط الصورة</label>
+                        <div class="flex gap-2">
+                            <input id="newImageUrl" class="flex-1 bg-zinc-800 p-3 rounded-lg mb-2" placeholder="https://example.com/image.jpg">
+                            <button onclick="previewImage()" class="bg-gray-700 px-4 rounded-lg mb-2"><i class="fa-solid fa-eye"></i></button>
+                        </div>
+                        <div id="imagePreviewContainer" class="mt-2 mb-3 hidden">
+                            <img id="imagePreview" class="w-full h-40 object-cover rounded-lg" src="" alt="معاينة">
+                        </div>
+                        <div class="flex gap-3 mt-3">
+                            <button onclick="addQuestionToBank()" class="bg-yellow-500 text-black flex-1 py-2 rounded-xl font-bold">حفظ</button>
+                            <button onclick="closeModal()" class="bg-gray-700 flex-1 py-2 rounded-xl">إلغاء</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal تعديل -->
+                <div id="editModal" class="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-50 hidden">
+                    <div class="bg-zinc-900 p-6 rounded-2xl w-full max-w-lg mx-4 border-yellow-500/50">
+                        <h3 class="text-2xl font-bold mb-4"><i class="fa-solid fa-pen text-yellow-400"></i> تعديل السؤال</h3>
+                        <input id="editId" type="hidden">
+                        <input id="editQText" class="w-full bg-zinc-800 p-3 rounded-lg mb-2">
+                        <input id="editOpt1" class="w-full bg-zinc-800 p-3 rounded-lg mb-2">
+                        <input id="editOpt2" class="w-full bg-zinc-800 p-3 rounded-lg mb-2">
+                        <input id="editOpt3" class="w-full bg-zinc-800 p-3 rounded-lg mb-2">
+                        <input id="editOpt4" class="w-full bg-zinc-800 p-3 rounded-lg mb-2">
+                        <select id="editCorrect" class="w-full bg-zinc-800 p-3 rounded-lg mb-2"><option value="0">الخيار 1 صحيح</option><option value="1">الخيار 2 صحيح</option><option value="2">الخيار 3 صحيح</option><option value="3">الخيار 4 صحيح</option></select>
+                        <input id="editImageUrl" class="w-full bg-zinc-800 p-3 rounded-lg mb-2" placeholder="رابط الصورة">
+                        <div class="flex gap-3 mt-2">
+                            <button onclick="saveEditQuestion()" class="bg-yellow-500 text-black flex-1 py-2 rounded-xl font-bold">حفظ</button>
+                            <button onclick="closeEditModal()" class="bg-gray-700 flex-1 py-2 rounded-xl">إلغاء</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a href="https://wa.me/212669048312" target="_blank" class="fixed bottom-6 left-6 bg-green-500 w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-xl hover:scale-110 transition z-40"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+
+    <script>
+        let globalQuestions = [];
+        let wrongAnswersBank = [];
+        let currentQuizIndex = 0;
+        let currentQuizSet = [];
+        let editingQuestionIndex = null;
+
+        // نقراو الأسئلة من ملف JSON خارجي
+        async function initData() {
+            try {
+                const res = await fetch('/data/questions.json');
+                if (!res.ok) throw new Error('ملف questions.json ما لقيتوش');
+                globalQuestions = await res.json();
+            } catch (e) {
+                console.error(e);
+                document.getElementById('questionText').innerText = 'خطأ: ما قدرتش نقرا ملف الأسئلة. تأكد بلي public/data/questions.json موجود';
+                return;
+            }
+
+            const storedWrong = localStorage.getItem('Tinghir_Wrong_Bank');
+            wrongAnswersBank = storedWrong? JSON.parse(storedWrong) : [];
+
+            currentQuizSet = [...globalQuestions];
+            document.getElementById('totalQuestionsCount').innerText = globalQuestions.length;
+            document.getElementById('adminTotalQ').innerText = globalQuestions.length;
+            document.getElementById('wrongCountSpan').innerText = wrongAnswersBank.length;
+            updateAdminUI();
+        }
+
+        function updateAdminUI() {
+            const container = document.getElementById('questionsAdminList');
+            if(container) {
+                container.innerHTML = globalQuestions.slice(0, 100).map((q, idx) => `
+                    <div class="bg-black/40 p-3 rounded-lg flex gap-3 items-center">
+                        <img src="${q.image}" class="w-16 h-12 object-cover rounded-lg" onerror="this.src='https://picsum.photos/id/100/100/80'">
+                        <div class="flex-1">
+                            <div class="text-sm font-semibold">${idx+1}. ${q.q.substring(0, 55)}...</div>
+                        </div>
+                        <button onclick="openEditModal(${idx})" class="text-blue-400 text-sm px-2"><i class="fa-regular fa-pen-to-square"></i></button>
+                        <button onclick="deleteQuestionById(${idx})" class="text-red-400 text-sm"><i class="fa-regular fa-trash-can"></i></button>
+                    </div>`).join('');
+            }
+            const wrongContainer = document.getElementById('wrongQuestionsList');
+            if(wrongContainer) {
+                wrongContainer.innerHTML = wrongAnswersBank.slice(0, 40).map((w, i) => `<div class="border-r-2 border-red-500 p-2 bg-red-950/30 rounded text-sm flex gap-2"><img src="${w.image}" class="w-12 h-10 object-cover rounded">${i+1}. ${w.q.substring(0, 50)}...<br><span class="text-green-300 text-xs">الصحيح: ${w.options[w.correct]}</span></div>`).join('');
+                document.getElementById('wrongCountSpan').innerText = wrongAnswersBank.length;
+            }
+        }
+
+        function previewImage() {
+            const url = document.getElementById('newImageUrl').value;
+            const preview = document.getElementById('imagePreview');
+            const container = document.getElementById('imagePreviewContainer');
+            if(url) {
+                preview.src = url;
+                container.classList.remove('hidden');
+            } else {
+                container.classList.add('hidden');
+            }
+        }
+
+        function showAddQuestionForm() {
+            document.getElementById('newQText').value = '';
+            document.getElementById('newOpt1').value = '';
+            document.getElementById('newOpt2').value = '';
+            document.getElementById('newOpt3').value = '';
+            document.getElementById('newOpt4').value = '';
+            document.getElementById('newCorrect').value = 0;
+            document.getElementById('newImageUrl').value = '';
+            document.getElementById('imagePreviewContainer').classList.add('hidden');
+            document.getElementById('questionModal').classList.remove('hidden');
+        }
+
+        function closeModal() { document.getElementById('questionModal').classList.add('hidden'); }
+        function closeEditModal() { document.getElementById('editModal').classList.add('hidden'); }
+
+        function addQuestionToBank() {
+            let text = document.getElementById('newQText').value.trim();
+            let opt1 = document.getElementById('newOpt1').value.trim();
+            let opt2 = document.getElementById('newOpt2').value.trim();
+            let opt3 = document.getElementById('newOpt3').value.trim();
+            let opt4 = document.getElementById('newOpt4').value.trim();
+            let correct = parseInt(document.getElementById('newCorrect').value);
+            let img = document.getElementById('newImageUrl').value.trim();
+            if(!text ||!opt1 ||!opt2 ||!opt3 ||!opt4) { alert("جميع الحقول مطلوبة"); return; }
+
+            globalQuestions.push({ id: Date.now(), q: text, image: img, options: [opt1,opt2,opt3,opt4], correct: correct });
+
+            // إلا زدتي سؤال خاصك تضغط تصدير باش تحفظو فالملف
+            currentQuizSet = [...globalQuestions];
+            updateAdminUI();
+            closeModal();
+            document.getElementById('totalQuestionsCount').innerText = globalQuestions.length;
+            document.getElementById('adminTotalQ').innerText = globalQuestions.length;
+            alert("تزاد السؤال! دابا ضغط على 'تصدير' وبدل ملف questions.json بالجديد");
+        }
+
+        function openEditModal(index) {
+            editingQuestionIndex = index;
+            const q = globalQuestions[index];
+            document.getElementById('editId').value = index;
+            document.getElementById('editQText').value = q.q;
+            document.getElementById('editOpt1').value = q.options[0];
+            document.getElementById('editOpt2').value = q.options[1];
+            document.getElementById('editOpt3').value = q.options[2];
+            document.getElementById('editOpt4').value = q.options[3];
+            document.getElementById('editCorrect').value = q.correct;
+            document.getElementById('editImageUrl').value = q.image;
+            document.getElementById('editModal').classList.remove('hidden');
+        }
+
+        function saveEditQuestion() {
+            const index = editingQuestionIndex;
+            globalQuestions[index].q = document.getElementById('editQText').value.trim();
+            globalQuestions[index].options = [
+                document.getElementById('editOpt1').value.trim(),
+                document.getElementById('editOpt2').value.trim(),
+                document.getElementById('editOpt3').value.trim(),
+                document.getElementById('editOpt4').value.trim()
+            ];
+            globalQuestions[index].correct = parseInt(document.getElementById('editCorrect').value);
+            globalQuestions[index].image = document.getElementById('editImageUrl').value.trim();
+
+            currentQuizSet = [...globalQuestions];
+            updateAdminUI();
+            closeEditModal();
+            alert("تعدّل السؤال! دابا ضغط على 'تصدير' باش تحفظ التغييرات");
+        }
+
+        function deleteQuestionById(idx) {
+            if(confirm("حذف السؤال بشكل نهائي؟")){
+                globalQuestions.splice(idx,1);
+                currentQuizSet = [...globalQuestions];
+                updateAdminUI();
+                document.getElementById('totalQuestionsCount').innerText = globalQuestions.length;
+                document.getElementById('adminTotalQ').innerText = globalQuestions.length;
+            }
+        }
+
+        function exportQuestions() {
+            const dataStr = JSON.stringify(globalQuestions, null, 2);
+            const blob = new Blob([dataStr], {type: "application/json"});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url; a.download = "questions.json";
+            a.click(); URL.revokeObjectURL(url);
+        }
+
+        function resetWrongBank() {
+            if(confirm("مسح كل الأخطاء المسجلة؟")){
+                wrongAnswersBank = [];
+                localStorage.setItem('Tinghir_Wrong_Bank', JSON.stringify(wrongAnswersBank));
+                updateAdminUI();
+            }
+        }
+
+        function loadCurrentQuestion() {
+            if(!currentQuizSet.length) return;
+            const q = currentQuizSet[currentQuizIndex % currentQuizSet.length];
+            document.getElementById('questionText').innerText = q.q;
+            document.getElementById('quizImage').src = q.image || 'https://picsum.photos/id/100/800/500';
+            document.getElementById('questionCounter').innerText = currentQuizIndex+1;
+            let percent = ((currentQuizIndex+1)/currentQuizSet.length)*100;
+            document.getElementById('progressFill').style.width = `${percent}%`;
+            const optsDiv = document.getElementById('optionsContainer');
+            optsDiv.innerHTML = '';
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = `w-full text-right p-4 rounded-xl border-white/15 bg-zinc-800/60 hover:bg-zinc-700 option-btn flex gap-3 items-center text-base`;
+                btn.innerHTML = `<span class="w-7 h-7 rounded-full bg-gray-700 inline-flex items-center justify-center text-yellow-300">${String.fromCharCode(65+idx)}</span> <span>${opt}</span>`;
+                btn.onclick = () => evaluateAnswer(idx, q.correct, btn, q);
+                optsDiv.appendChild(btn);
+            });
+            document.getElementById('feedbackMsg').innerHTML = '';
+            document.getElementById('nextBtnQuiz').onclick = () => { currentQuizIndex++; loadCurrentQuestion(); };
+        }
+
+        function evaluateAnswer(selected, correct, element, questionObj) {
+            const allBtns = document.querySelectorAll('#optionsContainer button');
+            allBtns.forEach(btn => btn.style.pointerEvents = 'none');
+            if(selected === correct) {
+                element.classList.add('correct-answer');
+                document.getElementById('feedbackMsg').innerHTML = '<span class="text-green-400">✅ صحيح! أحسنت</span>';
+            } else {
+                element.classList.add('wrong-answer');
+                allBtns.forEach((btn,i)=>{ if(i===correct) btn.classList.add('correct-answer'); });
+                document.getElementById('feedbackMsg').innerHTML = `<span class="text-red-300">❌ خطأ! الإجابة الصحيحة: ${questionObj.options[correct]}</span>`;
+                wrongAnswersBank.push(questionObj);
+                localStorage.setItem('Tinghir_Wrong_Bank', JSON.stringify(wrongAnswersBank));
+                updateAdminUI();
+            }
+        }
+
+        function speakCurrent() {
+            const txt = document.getElementById('questionText')?.innerText;
+            if(txt && window.speechSynthesis){
+                let utterance = new SpeechSynthesisUtterance(txt);
+                utterance.lang = 'ar-MA';
+                utterance.rate = 0.95;
+                speechSynthesis.cancel();
+                speechSynthesis.speak(utterance);
+            } else alert("متصفحك ما يدعمش الصوت");
+        }
+
+        function navigateTo(page) {
+            document.getElementById('homePage').classList.add('hidden');
+            document.getElementById('modulesPage').classList.add('hidden');
+            document.getElementById('quizPage').classList.add('hidden');
+            document.getElementById('adminPage').classList.add('hidden');
+            if(page === 'home') document.getElementById('homePage').classList.remove('hidden');
+            else if(page === 'modules') document.getElementById('modulesPage').classList.remove('hidden');
+            else if(page === 'quiz') {
+                document.getElementById('quizPage').classList.remove('hidden');
+                if(!currentQuizSet.length) currentQuizSet=[...globalQuestions];
+                currentQuizIndex=0;
+                loadCurrentQuestion();
+                document.getElementById('speakBtn').onclick = speakCurrent;
+            }
+            else if(page === 'admin') { document.getElementById('adminPage').classList.remove('hidden'); updateAdminUI(); }
+        }
+
+        function toggleLesson(num) {
+            const lesson = document.getElementById(`lesson-${num}`);
+            const icon = document.getElementById(`icon-${num}`);
+            if(lesson.classList.contains('open')) {
+                lesson.classList.remove('open');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                lesson.classList.add('open');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        window.deleteQuestionById = deleteQuestionById;
+        window.showAddQuestionForm = showAddQuestionForm;
+        window.addQuestionToBank = addQuestionToBank;
+        window.closeModal = closeModal;
+        window.closeEditModal = closeEditModal;
+        window.openEditModal = openEditModal;
+        window.saveEditQuestion = saveEditQuestion;
+        window.exportQuestions = exportQuestions;
+        window.resetWrongBank = resetWrongBank;
+        window.navigateTo = navigateTo;
+        window.toggleLesson = toggleLesson;
+        window.previewImage = previewImage;
+
+        initData();
+        navigateTo('home');
+    </script>
+</body>
+</html>
