@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "q": "السؤال هنا",
+    "image": "https://picsum.photos/id/30/800/500",
+    "options": ["الجواب 1", "الجواب 2", "الجواب 3"],
+    "correct": 1
+  },
+  {
+    "id": 2,
+    "q": "السؤال الثاني",
+    "image": "https://picsum.photos/id/31/800/500", 
+    "options": ["أ", "ب", "ج"],
+    "correct": 0
+  }
+]
