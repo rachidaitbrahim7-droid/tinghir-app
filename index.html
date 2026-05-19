@@ -190,7 +190,7 @@
         // نقراو الأسئلة من ملف JSON خارجي
         async function initData() {
             try {
-                const res = await fetch('/data/questions.json');
+                const res = await fetch('./data/questions.json');
                 if (!res.ok) throw new Error('ملف questions.json ما لقيتوش');
                 globalQuestions = await res.json();
             } catch (e) {
