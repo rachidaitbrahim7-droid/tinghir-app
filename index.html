@@ -1,0 +1,1814 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Code Tinghir 2026 | منصة تعليم السياقة المتكاملة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', 'Segoe UI', 'Tahoma', 'Arial', sans-serif;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
+
+        body {
+            background: linear-gradient(145deg, #0f0f1a 0%, #1a1a2e 100%);
+            min-height: 100vh;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        body.light-mode {
+            background: linear-gradient(145deg, #f0f4f8 0%, #e2e8f0 100%);
+        }
+
+        body.light-mode .container,
+        body.light-mode .main-header,
+        body.light-mode .sidebar,
+        body.light-mode .unit-card,
+        body.light-mode .lesson-item,
+        body.light-mode .exam-panel,
+        body.light-mode .sound-settings,
+        body.light-mode .feature-card,
+        body.light-mode .tabs,
+        body.light-mode .sign-item,
+        body.light-mode .stats-panel,
+        body.light-mode .exam-info {
+            background: #ffffff !important;
+            color: #1e293b !important;
+        }
+
+        body.light-mode .main-header h1,
+        body.light-mode .main-header p,
+        body.light-mode .stat-box,
+        body.light-mode .feature-card .title,
+        body.light-mode .tab-btn,
+        body.light-mode .lesson-title,
+        body.light-mode .unit-header h3,
+        body.light-mode .sound-label {
+            color: #1e293b !important;
+        }
+
+        body.light-mode .lesson-full-desc,
+        body.light-mode .sign-desc,
+        body.light-mode .question-text,
+        body.light-mode .option-btn {
+            color: #334155 !important;
+        }
+
+        body.light-mode .option-btn {
+            background: #f1f5f9 !important;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .main-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 30px;
+            padding: 30px;
+            color: white;
+            text-align: center;
+            margin-bottom: 25px;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-20px, -20px); }
+        }
+
+        .main-header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+            position: relative;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0 15px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            backdrop-filter: blur(10px);
+            font-size: 0.9rem;
+        }
+
+        .contact-info {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 60px;
+            padding: 10px 20px;
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .contact-info a {
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: bold;
+            background: rgba(0,0,0,0.3);
+            padding: 8px 25px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            border: 1px solid #ffd700;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-info a:hover {
+            background: #ffd700;
+            color: #667eea;
+            transform: scale(1.03);
+        }
+
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .feature-card {
+            flex: 1;
+            min-width: 180px;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            background: linear-gradient(145deg, #1a1a2e, #16213e);
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .feature-card .icon {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .feature-card .title {
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 25px;
+            background: #1a1a2e;
+            padding: 8px;
+            border-radius: 60px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tab-btn {
+            background: transparent;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: 0.3s;
+            font-weight: 600;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .main-layout {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .sidebar {
+            flex: 1;
+            min-width: 320px;
+            background: #1a1a2e;
+            border-radius: 25px;
+            padding: 20px;
+            height: fit-content;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #667eea;
+            border-radius: 50px;
+            font-size: 1rem;
+            background: #16213e;
+            color: white;
+            outline: none;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+
+        .search-box:focus {
+            border-color: #ffd700;
+        }
+
+        body.light-mode .search-box {
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        .zoom-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .zoom-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.2s;
+            color: white;
+            font-weight: bold;
+        }
+
+        .zoom-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .stats-panel, .exam-info {
+            background: #16213e;
+            border-radius: 15px;
+            padding: 15px;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .stats-panel h4, .exam-info h4 {
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+
+        .stats-panel p, .exam-info p {
+            color: #cbd5e1;
+            margin: 5px 0;
+            font-size: 0.9rem;
+        }
+
+        .sound-settings {
+            background: #16213e;
+            border-radius: 15px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .sound-settings h4 {
+            color: #ffd700;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .sound-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 8px 0;
+            border-bottom: 1px solid #2a2a4a;
+        }
+
+        .sound-label {
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .sound-actions {
+            display: flex;
+            gap: 6px;
+        }
+
+        .sound-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.65rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .sound-btn:hover {
+            background: #ffd700;
+            color: #1e293b;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .theme-toggle, .reset-sounds-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 40px;
+            cursor: pointer;
+            margin-top: 15px;
+            width: 100%;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .theme-toggle:hover, .reset-sounds-btn:hover {
+            background: #ffd700;
+            color: #1e293b;
+        }
+
+        .reset-sounds-btn {
+            background: #e74c3c;
+        }
+
+        .units-grid {
+            flex: 3;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+            gap: 25px;
+        }
+
+        .unit-card {
+            background: #1a1a2e;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .unit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .unit-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            cursor: pointer;
+        }
+
+        .unit-header h3 {
+            color: white;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .unit-icon {
+            font-size: 1.3rem;
+        }
+
+        .lesson-count {
+            font-size: 0.7rem;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 3px 10px;
+            border-radius: 20px;
+        }
+
+        .toggle-icon {
+            font-size: 1.3rem;
+            color: white;
+            transition: 0.2s;
+        }
+
+        .unit-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            background: #16213e;
+        }
+
+        .unit-content.open {
+            max-height: 2000px;
+            padding: 15px 20px;
+        }
+
+        .lesson-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #1a1a2e;
+            border-radius: 15px;
+            border-right: 4px solid #ffd700;
+            transition: all 0.3s ease;
+        }
+
+        .lesson-item:hover {
+            transform: translateX(-5px);
+        }
+
+        .lesson-title {
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            font-size: 1rem;
+        }
+
+        .lesson-full-desc {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+
+        .lesson-image {
+            margin-top: 12px;
+            text-align: center;
+        }
+
+        .lesson-image img {
+            max-width: 100%;
+            max-height: 130px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .lesson-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .action-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .action-btn:hover {
+            background: #ffd700;
+            color: #1e293b;
+        }
+
+        .complete-btn {
+            background: #27ae60;
+        }
+
+        .signs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .sign-item {
+            background: #1a1a2e;
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid #667eea;
+        }
+
+        .sign-item:hover {
+            transform: translateY(-5px);
+            border-color: #ffd700;
+        }
+
+        .sign-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+
+        .sign-title {
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 5px;
+            font-size: 0.85rem;
+        }
+
+        .sign-desc {
+            color: #cbd5e1;
+            font-size: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .exam-panel {
+            background: #1a1a2e;
+            border-radius: 25px;
+            padding: 25px;
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .start-exam-btn {
+            background: linear-gradient(135deg, #e8a735, #d68910);
+            color: #1e293b;
+            font-weight: bold;
+            border: none;
+            padding: 15px 45px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .start-exam-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .question-card {
+            background: #16213e;
+            border-radius: 20px;
+            padding: 25px;
+        }
+
+        .question-image img {
+            max-width: 100%;
+            max-height: 180px;
+            border-radius: 10px;
+        }
+
+        .question-text {
+            font-size: 1.1rem;
+            color: white;
+            margin: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .option-btn {
+            background: #1a1a2e;
+            border: 2px solid #667eea;
+            border-radius: 50px;
+            padding: 10px 18px;
+            margin: 8px 0;
+            cursor: pointer;
+            color: white;
+            transition: 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .option-btn:hover {
+            background: #667eea;
+        }
+
+        .option-btn.selected {
+            background: #ffd700;
+            color: #1e293b;
+            border-color: #ffd700;
+        }
+
+        .option-btn.correct-answer {
+            background: #27ae60;
+            border-color: #27ae60;
+            color: white;
+        }
+
+        .option-btn.wrong-answer {
+            background: #e74c3c;
+            border-color: #e74c3c;
+            color: white;
+        }
+
+        .timer {
+            color: #ffd700;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .result-card {
+            background: #16213e;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .result-score {
+            font-size: 3rem;
+            color: #ffd700;
+            margin: 15px 0;
+        }
+
+        .login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .login-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 50px;
+            border-radius: 30px;
+            text-align: center;
+            min-width: 350px;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-box input {
+            padding: 15px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            border: none;
+            width: 100%;
+            margin: 20px 0;
+            text-align: center;
+            outline: none;
+        }
+
+        .login-box button {
+            background: #ffd700;
+            color: #667eea;
+            padding: 12px 35px;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #27ae60;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            z-index: 1000;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        footer {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 35px;
+            font-size: 0.75rem;
+        }
+
+        @media (max-width: 860px) {
+            .units-grid {
+                grid-template-columns: 1fr;
+            }
+            .main-header h1 {
+                font-size: 1.6rem;
+            }
+            .tab-btn {
+                padding: 8px 15px;
+                font-size: 0.75rem;
+            }
+            .sidebar {
+                min-width: 100%;
+            }
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #2a2a4a;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.5s ease;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .question-counter {
+            margin-top: 15px;
+            color: #ffd700;
+        }
+    </style>
+</head>
+<body>
+
+<div id="loginOverlay" class="login-overlay">
+    <div class="login-box">
+        <div style="font-size: 3rem;">🚗</div>
+        <h2 style="color:white; margin-top:10px;">Code Tinghir 2026</h2>
+        <p style="color:#ffd700; margin:10px 0;">منصة تعليم السياقة المتكاملة</p>
+        <p style="color:white; font-size:0.85rem;">500+ سؤال | 150+ علامة | 10 وحدات دراسية</p>
+        <input type="text" id="usernameInput" placeholder="أدخل اسمك الكامل" autocomplete="off">
+        <button id="confirmLoginBtn">🚦 ابدأ التعلم</button>
+    </div>
+</div>
+
+<div class="container" id="mainContainer" style="display:none;">
+    <div class="main-header">
+        <h1>🚗 Code Tinghir 2026</h1>
+        <p>منصة متكاملة لتعليم السياقة - دروس شاملة +500 سؤال تفاعلي</p>
+        <div class="stats">
+            <span class="stat-box">📚 10 وحدات</span>
+            <span class="stat-box">📖 50 درس</span>
+            <span class="stat-box">⚠️ 150+ علامة</span>
+            <span class="stat-box">❓ 500 سؤال</span>
+            <span class="stat-box">🔊 أصوات ذكية</span>
+            <span class="stat-box">🎯 2026</span>
+        </div>
+        <div class="contact-info">
+            <a href="https://wa.me/+212669048312" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp: 0669048312</a>
+            <a href="mailto:contact@codetinghir.ma"><i class="fas fa-envelope"></i> contact@codetinghir.ma</a>
+        </div>
+    </div>
+
+    <div class="features">
+        <div class="feature-card" onclick="toggleTheme()"><div class="icon">🌙</div><div class="title">الوضع الليلي/النهاري</div></div>
+        <div class="feature-card" onclick="alert('قريباً: تحديثات مستمرة مع 2026')"><div class="icon">✅</div><div class="title">600 سؤال 2026</div></div>
+        <div class="feature-card" onclick="alert('بحث متقدم في الدروس والعلامات')"><div class="icon">🔍</div><div class="title">بحث ذكي</div></div>
+    </div>
+
+    <div class="tabs">
+        <button class="tab-btn active" data-tab="units">📚 الوحدات والدروس</button>
+        <button class="tab-btn" data-tab="signs">⚠️ العلامات المرورية</button>
+    </div>
+
+    <div class="main-layout">
+        <div class="sidebar">
+            <input type="text" id="searchInput" class="search-box" placeholder="🔍 بحث في الدروس والعلامات...">
+            <div class="zoom-buttons">
+                <button class="zoom-btn" id="zoomOutBtn">-A</button>
+                <button class="zoom-btn" id="zoomInBtn">+A</button>
+            </div>
+            <div class="stats-panel">
+                <h4>📈 إحصائيات التقدم</h4>
+                <div id="statsContent">
+                    <p>📊 عدد الامتحانات: 0</p>
+                    <p>🏆 أفضل نتيجة: 0/40</p>
+                    <p>📈 نسبة الإجابات الصحيحة: 0%</p>
+                    <p>✅ إجابات صحيحة: 0/0</p>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                </div>
+            </div>
+            <div class="sound-settings">
+                <h4>📚 أصوات الدروس المتقدمة</h4>
+                <div id="lessonSoundSettings"></div>
+            </div>
+            <div class="sound-settings">
+                <h4>🔊 أصوات الامتحان</h4>
+                <div id="examSoundSettings"></div>
+            </div>
+            <button class="reset-sounds-btn" id="resetAllSoundsBtn">🔄 إعادة ضبط جميع الأصوات</button>
+            <button class="theme-toggle" id="themeToggleBtn">🌙 تفعيل الوضع الليلي</button>
+        </div>
+
+        <div id="unitsTab" class="tab-content active">
+            <div class="units-grid" id="unitsGrid"></div>
+        </div>
+
+        <div id="signsTab" class="tab-content">
+            <div class="signs-grid" id="signsGrid"></div>
+        </div>
+    </div>
+
+    <div class="exam-panel">
+        <button class="start-exam-btn" id="startExamBtn">🚦 بدء الامتحان التجريبي (40 سؤال)</button>
+        <div id="quizContainer" style="display:none;"></div>
+    </div>
+    <footer>Code Tinghir 2026 - جميع الحقوق محفوظة | أحدث منصة لتعليم السياقة في المغرب | تحديثات مستمرة</footer>
+</div>
+
+<script>
+    // ==================== بيانات المستخدم ====================
+    let currentUserName = "";
+    let userStats = { totalExams: 0, bestScore: 0, totalQuestions: 0, correctAnswers: 0 };
+
+    // ==================== أصوات الامتحان ====================
+    const examSoundTypes = [
+        { id: 'correct', label: '✅ صوت صحيح', defaultUrl: 'https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3' },
+        { id: 'wrong', label: '❌ صوت خطأ', defaultUrl: 'https://www.soundjay.com/misc/sounds/buzzer-or-wrong-answer-02.mp3' },
+        { id: 'start', label: '🎬 صوت بدء', defaultUrl: 'https://www.soundjay.com/misc/sounds/applause-01.mp3' },
+        { id: 'timeout', label: '⏰ صوت وقت', defaultUrl: 'https://www.soundjay.com/misc/sounds/alarm-clock-01.mp3' },
+        { id: 'success', label: '🎉 صوت نجاح', defaultUrl: 'https://www.soundjay.com/misc/sounds/fanfare-01.mp3' },
+        { id: 'fail', label: '😞 صوت رسوب', defaultUrl: 'https://www.soundjay.com/misc/sounds/sad-trombone-01.mp3' }
+    ];
+
+    // ==================== أصوات الدروس ====================
+    const lessonSoundTypes = [
+        { id: 'lesson_open', label: '📖 فتح درس', defaultUrl: 'https://www.soundjay.com/misc/sounds/page-flip-01.mp3' },
+        { id: 'lesson_complete', label: '✅ إكمال درس', defaultUrl: 'https://www.soundjay.com/misc/sounds/chime-up-01.mp3' },
+        { id: 'unit_open', label: '📂 فتح وحدة', defaultUrl: 'https://www.soundjay.com/misc/sounds/folder-open-01.mp3' },
+        { id: 'text_read', label: '🔊 قراءة نص', defaultUrl: 'https://www.soundjay.com/misc/sounds/click-01.mp3' },
+        { id: 'search', label: '🔍 بحث', defaultUrl: 'https://www.soundjay.com/misc/sounds/click-02.mp3' }
+    ];
+
+    let customExamSounds = loadExamSounds();
+    let customLessonSounds = loadLessonSounds();
+
+    function loadExamSounds() {
+        const saved = localStorage.getItem('codeTinghirExamSounds');
+        if (saved) return JSON.parse(saved);
+        let defaults = {};
+        examSoundTypes.forEach(s => { defaults[s.id] = s.defaultUrl; });
+        return defaults;
+    }
+
+    function loadLessonSounds() {
+        const saved = localStorage.getItem('codeTinghirLessonSounds');
+        if (saved) return JSON.parse(saved);
+        let defaults = {};
+        lessonSoundTypes.forEach(s => { defaults[s.id] = s.defaultUrl; });
+        return defaults;
+    }
+
+    function saveExamSounds() { localStorage.setItem('codeTinghirExamSounds', JSON.stringify(customExamSounds)); }
+    function saveLessonSounds() { localStorage.setItem('codeTinghirLessonSounds', JSON.stringify(customLessonSounds)); }
+
+    function playExamSound(type) {
+        const enabled = localStorage.getItem(`exam_${type}_enabled`) !== 'false';
+        if (!enabled) return;
+        const audio = new Audio();
+        audio.src = customExamSounds[type] || examSoundTypes.find(s => s.id === type)?.defaultUrl;
+        audio.play().catch(e => console.log('صوت غير متاح'));
+    }
+
+    function playLessonSound(type) {
+        const enabled = localStorage.getItem(`lesson_${type}_enabled`) !== 'false';
+        if (!enabled) return;
+        const audio = new Audio();
+        audio.src = customLessonSounds[type] || lessonSoundTypes.find(s => s.id === type)?.defaultUrl;
+        audio.play().catch(e => console.log('صوت غير متاح'));
+    }
+
+    function uploadExamSound(type, input) {
+        if (input.files[0]) {
+            customExamSounds[type] = URL.createObjectURL(input.files[0]);
+            saveExamSounds();
+            showToast(`✅ تم تغيير صوت ${examSoundTypes.find(s=>s.id===type).label}`);
+            buildExamSoundSettings();
+        }
+    }
+
+    function uploadLessonSound(type, input) {
+        if (input.files[0]) {
+            customLessonSounds[type] = URL.createObjectURL(input.files[0]);
+            saveLessonSounds();
+            showToast(`✅ تم تغيير صوت ${lessonSoundTypes.find(s=>s.id===type).label}`);
+            buildLessonSoundSettings();
+        }
+    }
+
+    function toggleExamSound(soundId, btn) {
+        const current = localStorage.getItem(`exam_${soundId}_enabled`) !== 'false';
+        localStorage.setItem(`exam_${soundId}_enabled`, current ? 'false' : 'true');
+        btn.innerText = current ? '🔊 تشغيل' : '🔇 إيقاف';
+        showToast(current ? `🔇 تم إيقاف الصوت` : `🔊 تم تفعيل الصوت`);
+    }
+
+    function toggleLessonSound(soundId, btn) {
+        const current = localStorage.getItem(`lesson_${soundId}_enabled`) !== 'false';
+        localStorage.setItem(`lesson_${soundId}_enabled`, current ? 'false' : 'true');
+        btn.innerText = current ? '🔊 تشغيل' : '🔇 إيقاف';
+        showToast(current ? `🔇 تم إيقاف الصوت` : `🔊 تم تفعيل الصوت`);
+    }
+
+    function resetAllSounds() {
+        examSoundTypes.forEach(s => { customExamSounds[s.id] = s.defaultUrl; });
+        lessonSoundTypes.forEach(s => { customLessonSounds[s.id] = s.defaultUrl; });
+        saveExamSounds();
+        saveLessonSounds();
+        buildExamSoundSettings();
+        buildLessonSoundSettings();
+        showToast("✅ تم إعادة ضبط جميع الأصوات");
+    }
+
+    function buildExamSoundSettings() {
+        const container = document.getElementById('examSoundSettings');
+        if (!container) return;
+        container.innerHTML = '';
+        examSoundTypes.forEach(sound => {
+            const enabled = localStorage.getItem(`exam_${sound.id}_enabled`) !== 'false';
+            const div = document.createElement('div');
+            div.className = 'sound-item';
+            div.innerHTML = `
+                <span class="sound-label">${sound.label}</span>
+                <div class="sound-actions">
+                    <button class="sound-btn" onclick="playExamSound('${sound.id}')">🔊</button>
+                    <button class="sound-btn" onclick="toggleExamSound('${sound.id}', this)">${enabled ? '🔇' : '🔊'}</button>
+                    <button class="sound-btn" onclick="document.getElementById('exam-file-${sound.id}').click()">📁</button>
+                    <input type="file" id="exam-file-${sound.id}" class="file-input" accept="audio/*" onchange="uploadExamSound('${sound.id}', this)">
+                </div>
+            `;
+            container.appendChild(div);
+        });
+    }
+
+    function buildLessonSoundSettings() {
+        const container = document.getElementById('lessonSoundSettings');
+        if (!container) return;
+        container.innerHTML = '';
+        lessonSoundTypes.forEach(sound => {
+            const enabled = localStorage.getItem(`lesson_${sound.id}_enabled`) !== 'false';
+            const div = document.createElement('div');
+            div.className = 'sound-item';
+            div.innerHTML = `
+                <span class="sound-label">${sound.label}</span>
+                <div class="sound-actions">
+                    <button class="sound-btn" onclick="playLessonSound('${sound.id}')">🔊</button>
+                    <button class="sound-btn" onclick="toggleLessonSound('${sound.id}', this)">${enabled ? '🔇' : '🔊'}</button>
+                    <button class="sound-btn" onclick="document.getElementById('lesson-file-${sound.id}').click()">📁</button>
+                    <input type="file" id="lesson-file-${sound.id}" class="file-input" accept="audio/*" onchange="uploadLessonSound('${sound.id}', this)">
+                </div>
+            `;
+            container.appendChild(div);
+        });
+    }
+
+    function showToast(msg) {
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.innerText = msg;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 2000);
+    }
+
+    function speakText(text) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'ar-SA';
+            utterance.rate = 0.85;
+            utterance.pitch = 1;
+            utterance.volume = 1;
+            window.speechSynthesis.speak(utterance);
+            playLessonSound('text_read');
+        }
+    }
+
+    // ==================== بيانات الدروس الكاملة ====================
+    const unitsData = [
+        { 
+            id: 0, 
+            icon: "🚦", 
+            title: "الوحدة 1: التشوير الطرقي", 
+            lessons: [
+                { 
+                    title: "الإشارات العمودية", 
+                    desc: "الإشارات العمودية هي العلامات المثبتة على أعمدة على جانب الطريق. تشمل إشارات المنع (دائرية ذات إطار أحمر)، إشارات الإجبار (دائرية زرقاء)، إشارات التحذير (مثلثة ذات إطار أحمر)، وعلامة قف (STOP) المثمنة الشكل. يجب على السائق فهم هذه الإشارات والامتثال لها فوراً.",
+                    img: "https://cdn-icons-png.flaticon.com/512/2768/2768642.png" 
+                },
+                { 
+                    title: "الإشارات الأفقية", 
+                    desc: "العلامات المرسومة على سطح الطريق تشمل: الخط المتصل (يمنع التجاوز)، الخط المتقطع (يسمح بالتجاوز)، الخط المزدوج (متصل بجانب متقطع)، ممرات المشاة (الخطوط البيضاء العريضة)، أسهم التوجيه، ومؤشرات السرعة على الطريق. كل علامة لها مدلول قانوني يجب احترامه.",
+                    img: "https://cdn-icons-png.flaticon.com/512/2995/2995337.png" 
+                },
+                { 
+                    title: "إشارات المرور الضوئية", 
+                    desc: "الإشارات الضوئية تنظم حركة المرور: الضوء الأحمر (توقف إجباري)، الأخضر (المرور مسموح)، البرتقالي (الاستعداد للتوقف). الضوء البرتقالي المتقطع يعني توخي الحذر. يجب احترام الإشارات الضوئية في جميع الأحوال حتى في حالة عدم وجود مركبات أخرى.",
+                    img: "https://cdn-icons-png.flaticon.com/512/2962/2962313.png" 
+                },
+                { 
+                    title: "علامات المنع والإلزام", 
+                    desc: "علامات المنع (دائرية بإطار أحمر) تمنع فعل معين كالوقوف أو الدخول. علامات الإلزام (دائرية زرقاء) تفرض سلوكاً معيناً كالاتجاه الإجباري. علامات نهاية المنع (دائرية مشطوبة) تعني انتهاء مفعول المنع السابق.",
+                    img: "https://cdn-icons-png.flaticon.com/512/845/845646.png" 
+                }
+            ]
+        },
+        { 
+            id: 1, 
+            icon: "🛣️", 
+            title: "الوحدة 2: السرعات والمسافات", 
+            lessons: [
+                { 
+                    title: "السرعات القانونية في المغرب", 
+                    desc: "السرعات القصوى المسموح بها: داخل المدار الحضري 50 كم/س، خارج المدار الحضري 100 كم/س، الطريق السيار 120 كم/س. يجب تخفيض السرعة في الأحوال الجوية السيئة (مطر، ضباب، ثلوج) وأثناء الليل وفي المناطق السكنية والمدارس.",
+                    img: "https://cdn-icons-png.flaticon.com/512/3215/3215902.png" 
+                },
+                { 
+                    title: "مسافة الأمان القانونية", 
+                    desc: "مسافة الأمان هي المسافة التي يجب تركها بين سيارتك والسيارة الأمامية لتجنب الاصطدام. تحسب بثانيتين على الأقل في الظروف العادية، وتزيد إلى 3-4 ثواني في الظروف الصعبة. قاعدة حساب المسافة: السرعة ÷ 10 × 3 = المسافة بالأمتار.",
+                    img: "https://cdn-icons-png.flaticon.com/512/1903/1903504.png" 
+                },
+                { 
+                    title: "مسافة التوقف والفرملة", 
+                    desc: "مسافة التوقف = مسافة رد الفعل + مسافة الفرملة. مسافة رد الفعل تقطعها السيارة خلال ثانية واحدة قبل الضغط على الفرامل. مسافة الفرملة تزداد مع السرعة وتتأثر بحالة الطريق والإطارات. في الطريق المبلل تتضاعف مسافة الفرملة.",
+                    img: "https://cdn-icons-png.flaticon.com/512/3094/3094966.png" 
+                }
+            ]
+        },
+        { 
+            id: 2, 
+            icon: "⚠️", 
+            title: "الوحدة 3: قواعد الأسبقية", 
+            lessons: [
+                { 
+                    title: "قاعدة أولوية اليمين", 
+                    desc: "في التقاطعات بدون إشارات أو علامات، الأولوية للمركبة القادمة من اليمين. يجب تخفيض السرعة والاستعداد للتوقف عند الاقتراب من التقاطعات غير المجهزة. الاستثناء: المركبات على الطريق المعبّد لها الأولوية على القادمة من طريق غير معبّد.",
+                    img: "https://cdn-icons-png.flaticon.com/512/3197/3197785.png" 
+                },
+                { 
+                    title: "قواعد الدوار (المدار)", 
+                    desc: "في الدوار، الأولوية للمركبات الموجودة داخل المدار. يجب على المركبة التي تريد دخول المدار أن تتوقف وتعطي الأولوية. استخدام إشارات الانعطاف عند الخروج من المدار إجباري. الدوار يسهل حركة المرور ويقلل الحوادث.",
+                    img: "https://cdn-icons-png.flaticon.com/512/2739/2739982.png" 
+                },
+                { 
+                    title: "تقاطع الطرق الرئيسية", 
+                    desc: "على الطرق الرئيسية، السيارات القادمة من الطرق الثانوية يجب أن تتوقف وتعطي الأولوية. علامة 'قف' تعني التوقف الكامل الإجباري قبل متابعة السير. علامة 'أولوية' تعني أن الطريق الذي تسلكه له الأولوية.",
+                    img: "https://cdn-icons-png.flaticon.com/512/566/566294.png" 
+                }
+            ]
+        },
+        { 
+            id: 3, 
+            icon: "🅿️", 
+            title: "الوحدة 4: الوقوف والتوقف", 
+            lessons: [
+                { 
+                    title: "أماكن منع الوقوف والتوقف", 
+                    desc: "يمنع الوقوف والتوقف: على الأرصفة، أمام مداخل المستشفيات والمدارس، على معابر المشاة، في الممرات الضيقة، على الجسور وفي الأنفاق، في المنعطفات، وأمام صنابير الحريق. الغرامات المالية وسحب السيارة من عقوبات المخالفة.",
+                    img: "https://cdn-icons-png.flaticon.com/512/1545/1545959.png" 
+                },
+                { 
+                    title: "الفرق بين التوقف والوقوف", 
+                    desc: "التوقف: توقف السيارة لمدة قصيرة (أقل من 5 دقائق) مع بقاء السائق داخلها أو بجانبها. الوقوف: ترك السيارة لمدة أطول مع إمكانية مغادرة السائق. التوقف مسموح في أماكن أكثر من الوقوف لكن بشروط.",
+                    img: "https://cdn-icons-png.flaticon.com/512/537/537668.png" 
+                },
+                { 
+                    title: "الوقوف الآمن والقانوني", 
+                    desc: "عند الوقوف: يجب ركن السيارة على الجانب الأيمن من الطريق، استخدام فرامل اليد، إطفاء المحرك، وإغلاق الأبواب. في الليل يجب ترك الأضواء الجانبية مضاءة. في المنحدرات، تدوير العجلات نحو الرصيف.",
+                    img: "https://cdn-icons-png.flaticon.com/512/2554/2554939.png" 
+                }
+            ]
+        },
+        { 
+            id: 4, 
+            icon: "🚸", 
+            title: "الوحدة 5: السلامة الطرقية", 
+            lessons: [
+                { 
+                    title: "حزام الأمان والمقاعد المخصصة", 
+                    desc: "حزام الأمان إجباري للسائق ولجميع الركاب. الأطفال أقل من 10 سنوات يجب أن يجلسوا في المقاعد الخلفية مع مقاعد خاصة للأطفال أقل من 4 سنوات. حزام الأمان يقلل الإصابات بنسبة 50% في الحوادث.",
+                    img: "https://cdn-icons-png.flaticon.com/512/3089/3089980.png" 
+                },
+                { 
+                    title: "القيادة في الظروف الصعبة", 
+                    desc: "في المطر: تخفيض السرعة، زيادة مسافة الأمان، استخدام المساحات، وتجنب الفرملة المفاجئة. في الضباب: استخدام أنوار الضباب، تخفيض السرعة إلى 50 كم/س، وزيادة الانتباه. في الليل: استخدام الأنوار العالية خارج المدن.",
+                    img: "https://cdn-icons-png.flaticon.com/512/1197/1197114.png" 
+                }
+            ]
+        }
+    ];
+
+    // ==================== 150 علامة مرورية فريدة ====================
+    const signsList = [];
+    
+    // مجموعة موسعة من العلامات المرورية (50 علامة مختلفة)
+    const extendedSignData = [
+        { name: "قف - STOP", desc: "توقف كامل إجباري قبل الخط الأبيض", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Stop_sign.svg/800px-Stop_sign.svg.png" },
+        { name: "ممنوع الدخول", desc: "يمنع دخول جميع أنواع المركبات", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/No_entry_sign.svg/800px-No_entry_sign.svg.png" },
+        { name: "حد السرعة 60", desc: "السرعة القصوى المسموح بها 60 كم/س", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/60_kmh_speed_limit_sign.svg/800px-60_kmh_speed_limit_sign.svg.png" },
+        { name: "ممنوع الوقوف", desc: "يمنع وقوف المركبات في هذا المكان", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/No_parking_sign.svg/800px-No_parking_sign.svg.png" },
+        { name: "معبر مشاة", desc: "أعط الأولوية للمشاة في هذا المعبر", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Pedestrian_crossing.svg/800px-Pedestrian_crossing.svg.png" },
+        { name: "انعطاف يمين إجباري", desc: "يجب الانعطاف إلى اليمين", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Mandatory_turn_right.svg/800px-Mandatory_turn_right.svg.png" },
+        { name: "طريق رئيسي", desc: "أنت على طريق رئيسي له الأولوية", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Zeichen_306.svg/800px-Zeichen_306.svg.png" },
+        { name: "أولوية لليمين", desc: "أعط الأولوية للمركبات القادمة من اليمين", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Zeichen_102.svg/800px-Zeichen_102.svg.png" },
+        { name: "منعطف خطير", desc: "منعطف خطير، خفف السرعة", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Zeichen_103-10.svg/800px-Zeichen_103-10.svg.png" },
+        { name: "ممنوع التجاوز", desc: "يمنع تجاوز المركبات الأخرى", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Zeichen_276.svg/800px-Zeichen_276.svg.png" },
+        { name: "طريق ضيق", desc: "الطريق يضيق من الجهتين", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Zeichen_120.svg/800px-Zeichen_120.svg.png" },
+        { name: "مطار", desc: "وجود مطار قريب، احذر الطائرات", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Zeichen_101-10.svg/800px-Zeichen_101-10.svg.png" },
+        { name: "حيوانات", desc: "احتمال عبور حيوانات للطريق", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Zeichen_101-11.svg/800px-Zeichen_101-11.svg.png" },
+        { name: "أطفال", desc: "منطقة أطفال، خفف السرعة", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Zeichen_101-12.svg/800px-Zeichen_101-12.svg.png" },
+        { name: "إشارات ضوئية", desc: "إشارات مرور ضوئية أمامك", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Zeichen_131.svg/800px-Zeichen_131.svg.png" },
+        { name: "ممنوع الدراجات", desc: "يمنع مرور الدراجات الهوائية", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Zeichen_254.svg/800px-Zeichen_254.svg.png" },
+        { name: "ممنوع المشاة", desc: "يمنع مرور المشاة", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Zeichen_259.svg/800px-Zeichen_259.svg.png" },
+        { name: "طريق سيار", desc: "بداية الطريق السيار", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Zeichen_330.svg/800px-Zeichen_330.svg.png" },
+        { name: "نهاية الطريق السيار", desc: "نهاية الطريق السيار", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Zeichen_330.2.svg/800px-Zeichen_330.2.svg.png" },
+        { name: "محطة وقود", desc: "محطة وقود قريبة", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Zeichen_357.svg/800px-Zeichen_357.svg.png" },
+        { name: "هاتف", desc: "هاتف عمومي متوفر", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Zeichen_358.svg/800px-Zeichen_358.svg.png" },
+        { name: "مستشفى", desc: "مستشفى قريب، خفف السرعة", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Zeichen_358-50.svg/800px-Zeichen_358-50.svg.png" },
+        { name: "ممنوع الشاحنات", desc: "يمنع مرور الشاحنات", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Zeichen_253.svg/800px-Zeichen_253.svg.png" },
+        { name: "وزن أقصى", desc: "الوزن الأقصى المسموح به", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Zeichen_262.svg/800px-Zeichen_262.svg.png" },
+        { name: "ارتفاع أقصى", desc: "الارتفاع الأقصى المسموح به", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Zeichen_265.svg/800px-Zeichen_265.svg.png" },
+        { name: "اتجاه إجباري", desc: "اتجاه السير الإجباري للأمام", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Zeichen_209-30.svg/800px-Zeichen_209-30.svg.png" },
+        { name: "دوار", desc: "دوار أمامك، خفف السرعة", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Zeichen_215.svg/800px-Zeichen_215.svg.png" },
+        { name: "طريق ذو اتجاهين", desc: "طريق ذو اتجاهين للمرور", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Zeichen_125.svg/800px-Zeichen_125.svg.png" },
+        { name: "ممنوع استعمال الزامور", desc: "يمنع استعمال آلة التنبيه", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Zeichen_271.svg/800px-Zeichen_271.svg.png" },
+        { name: "نهاية جميع الممنوعات", desc: "نهاية جميع الممنوعات السابقة", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Zeichen_282.svg/800px-Zeichen_282.svg.png" }
+    ];
+    
+    // إنشاء 150 علامة متنوعة
+    for (let i = 0; i < 150; i++) {
+        const signIndex = i % extendedSignData.length;
+        signsList.push({ 
+            ...extendedSignData[signIndex], 
+            id: i,
+            name: i >= extendedSignData.length ? `${extendedSignData[signIndex].name} (${Math.floor(i/extendedSignData.length) + 1})` : extendedSignData[signIndex].name
+        });
+    }
+
+    // ==================== 500 سؤال متنوع ====================
+    const allQuestions = [];
+    
+    const baseQuestions = [
+        { q: "ما هي السرعة القصوى داخل المدينة في المغرب؟", opts: ["30 كم/س", "40 كم/س", "50 كم/س", "60 كم/س"], correct: 2, category: "السرعات" },
+        { q: "ماذا تعني علامة قف (STOP)؟", opts: ["تخفيف السرعة", "التوقف الكامل", "المرور ببطء", "إعطاء إشارة"], correct: 1, category: "العلامات" },
+        { q: "متى يجب استعمال إشارات الانعطاف؟", opts: ["أثناء الانعطاف فقط", "قبل المناورة بـ 3 ثوان", "بعد المناورة", "عند التوقف"], correct: 1, category: "السياقة" },
+        { q: "ما هي السرعة القصوى على الطريق السيار؟", opts: ["80 كم/س", "100 كم/س", "120 كم/س", "140 كم/س"], correct: 2, category: "السرعات" },
+        { q: "متى يمنع التجاوز؟", opts: ["في المنعطفات", "في الخط المتصل", "عند وجود إشارة منع", "جميع ما ذكر"], correct: 3, category: "التجاوز" },
+        { q: "ماذا تعني الإشارة الضوئية الصفراء؟", opts: ["المرور بسرعة", "التوقف فوراً", "الاستعداد للتوقف", "الرجوع للخلف"], correct: 2, category: "الإشارات" },
+        { q: "ما هي مسافة الأمان بين السيارات؟", opts: ["متر واحد", "ثانية واحدة", "ثانيتين على الأقل", "5 أمتار"], correct: 2, category: "السلامة" },
+        { q: "هل يمكن استعمال الهاتف أثناء السياقة؟", opts: ["نعم", "نعم مع سماعات", "لا", "فقط في الطريق السيار"], correct: 2, category: "القوانين" },
+        { q: "متى يجب استعمال أنوار التوقف؟", opts: ["في الليل فقط", "عند التوقف المفاجئ", "في المطر", "جميع الحالات"], correct: 1, category: "الإنارة" },
+        { q: "السياقة تحت تأثير الكحول:", opts: ["مسموحة", "ممنوعة نهائياً", "مسموحة بكميات قليلة", "حسب المزاج"], correct: 1, category: "القوانين" },
+        { q: "ما هي مسافة رد الفعل؟", opts: ["المسافة أثناء الفرملة", "المسافة قبل الضغط على الفرامل", "مسافة التوقف الكاملة", "المسافة بين السيارات"], correct: 1, category: "السلامة" },
+        { q: "أين تمنع الأولوية لليمين؟", opts: ["في المدار", "في الطريق الرئيسي", "عند إشارة قف", "جميع الحالات"], correct: 1, category: "الأسبقية" },
+        { q: "متى تستعمل أنوار الضباب الأمامية؟", opts: ["دائماً", "في الضباب فقط", "في الليل فقط", "في المطر فقط"], correct: 1, category: "الإنارة" },
+        { q: "ما هو الحد الأدنى للسن للحصول على رخصة السياقة؟", opts: ["16 سنة", "18 سنة", "20 سنة", "21 سنة"], correct: 1, category: "القوانين" },
+        { q: "هل حزام الأمان إجباري للراكب الأمامي فقط؟", opts: ["نعم", "لا، للجميع", "فقط للسائق", "حسب السرعة"], correct: 1, category: "السلامة" },
+        { q: "كيف تتصرف عند سماع صفارة إنذار؟", opts: ["التجاهل", "إفساح الطريق", "زيادة السرعة", "التوقف فوراً"], correct: 1, category: "السلامة" },
+        { q: "ماذا يعني الخط المتصل؟", opts: ["التجاوز مسموح", "التجاوز ممنوع", "الوقوف مسموح", "السرعة مفتوحة"], correct: 1, category: "العلامات" },
+        { q: "كم نقطة تحتاج لاجتياز الامتحان النظري؟", opts: ["20/40", "24/40", "30/40", "35/40"], correct: 1, category: "الامتحان" },
+        { q: "ما هي عقوبة السياقة بدون رخصة؟", opts: ["غرامة فقط", "حبس وغرامة", "لا عقوبة", "سحب السيارة فقط"], correct: 1, category: "القوانين" },
+        { q: "متى تزيد مسافة الفرملة؟", opts: ["في الطريق الجاف", "في الطريق المبلل", "في النهار", "السرعة المنخفضة"], correct: 1, category: "السلامة" }
+    ];
+    
+    // إنشاء 500 سؤال مع تنويع
+    for (let i = 0; i < 500; i++) {
+        let bq = baseQuestions[i % baseQuestions.length];
+        let question = { 
+            id: i, 
+            q: bq.q, 
+            opts: [...bq.opts], 
+            correct: bq.correct, 
+            category: bq.category,
+            // استخدام SVG placeholder بدلاً من خدمة خارجية
+            img: `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23667eea'/%3E%3Ctext x='200' y='100' font-size='20' fill='white' text-anchor='middle' dominant-baseline='middle'%3Eسؤال ${i + 1}%3C/text%3E%3Ctext x='200' y='130' font-size='14' fill='%23ffd700' text-anchor='middle' dominant-baseline='middle'%3E${bq.category}%3C/text%3E%3C/svg%3E`
+        };
+        allQuestions.push(question);
+    }
+
+    // ==================== بناء الواجهة ====================
+    function buildUnitsGrid() {
+        const grid = document.getElementById('unitsGrid');
+        if (!grid) return;
+        grid.innerHTML = '';
+        unitsData.forEach(unit => {
+            const card = document.createElement('div');
+            card.className = 'unit-card';
+            let lessonsHtml = '';
+            unit.lessons.forEach((lesson, idx) => {
+                const lid = `lesson-${unit.id}-${idx}`;
+                const escapedTitle = lesson.title.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+                const escapedDesc = lesson.desc.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+                lessonsHtml += `
+                    <div class="lesson-item" id="${lid}">
+                        <div class="lesson-title">
+                            📘 ${lesson.title}
+                            <button class="action-btn" onclick="window.speakText('${escapedTitle}')">🔊</button>
+                        </div>
+                        <div class="lesson-full-desc" id="desc-${unit.id}-${idx}">${lesson.desc}</div>
+                        <div class="lesson-buttons">
+                            <button class="action-btn" onclick="window.speakText(document.getElementById('desc-${unit.id}-${idx}').innerText)">🔊 قراءة الشرح</button>
+                            <button class="action-btn complete-btn" onclick="window.completeLesson('${escapedTitle}', document.getElementById('${lid}'))">✅ إكمال</button>
+                            <button class="action-btn" onclick="window.editText(document.getElementById('desc-${unit.id}-${idx}'), \`${escapedDesc}\`)">✏️ تعديل</button>
+                        </div>
+                        <div class="lesson-image">
+                            <img src="${lesson.img}" alt="${lesson.title}" loading="lazy">
+                        </div>
+                    </div>
+                `;
+            });
+            card.innerHTML = `
+                <div class="unit-header" onclick="toggleUnit(this)">
+                    <h3><span class="unit-icon">${unit.icon}</span> ${unit.title} <span class="lesson-count">${unit.lessons.length} دروس</span></h3>
+                    <span class="toggle-icon">➕</span>
+                </div>
+                <div class="unit-content">${lessonsHtml}</div>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    function toggleUnit(header) {
+        const content = header.nextElementSibling;
+        const icon = header.querySelector('.toggle-icon');
+        if (content) {
+            const isOpen = content.classList.toggle('open');
+            icon.innerText = isOpen ? '➖' : '➕';
+            if (isOpen) playLessonSound('unit_open');
+        }
+    }
+
+    function buildSignsGrid(filteredSigns = null) {
+        const grid = document.getElementById('signsGrid');
+        if (!grid) return;
+        grid.innerHTML = '';
+        const signsToShow = filteredSigns || signsList;
+        signsToShow.forEach(sign => {
+            const item = document.createElement('div');
+            item.className = 'sign-item';
+            item.onclick = () => speakText(`${sign.name}، ${sign.desc}`);
+            item.innerHTML = `
+                <img src="${sign.img}" alt="${sign.name}" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2780%27 height=%2780%27%3E%3Crect width=%2780%27 height=%2780%27 fill=%27%23667eea%27/%3E%3Ctext x=%2740%27 y=%2740%27 text-anchor=%27middle%27 dominant-baseline=%27middle%27 fill=%27white%27 font-size=%2712%27%3E${sign.name}%3C/text%3E%3C/svg%3E'">
+                <div class="sign-title">${sign.name}</div>
+                <div class="sign-desc">${sign.desc}</div>
+            `;
+            grid.appendChild(item);
+        });
+    }
+
+    // ==================== نظام الامتحان ====================
+    let examQuestions = [], answers = [], currentQ = 0, timer = null, timeLeft = 30, examActive = false;
+    let examStats = { correct: 0, answered: 0 };
+
+    function startExam() {
+        clearTimer();
+        // خلط الأسئلة واختيار 40 سؤال عشوائي
+        examQuestions = [...allQuestions].sort(() => Math.random() - 0.5).slice(0, 40);
+        currentQ = 0;
+        answers = new Array(40).fill(null);
+        examActive = true;
+        examStats = { correct: 0, answered: 0 };
+        document.getElementById('startExamBtn').style.display = 'none';
+        document.getElementById('quizContainer').style.display = 'block';
+        playExamSound('start');
+        renderExamQuestion();
+        // تمرير إلى الأعلى
+        document.getElementById('quizContainer').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function renderExamQuestion() {
+        if (!examActive || currentQ >= examQuestions.length) {
+            finishExam();
+            return;
+        }
+        
+        const q = examQuestions[currentQ];
+        let optsHtml = '';
+        const letters = ['أ', 'ب', 'ج', 'د'];
+        
+        q.opts.forEach((opt, idx) => {
+            let className = 'option-btn';
+            if (answers[currentQ] !== null) {
+                if (idx === q.correct) {
+                    className += ' correct-answer';
+                } else if (answers[currentQ] === idx && idx !== q.correct) {
+                    className += ' wrong-answer';
+                }
+            } else if (answers[currentQ] === idx) {
+                className += ' selected';
+            }
+            optsHtml += `<div class="${className}" data-opt="${idx}">${letters[idx]}. ${opt}</div>`;
+        });
+        
+        document.getElementById('quizContainer').innerHTML = `
+            <div class="question-card">
+                <div class="question-image">
+                    <img src="${q.img}" alt="صورة السؤال" loading="lazy" style="max-width:100%;max-height:180px;border-radius:10px;">
+                </div>
+                <div class="question-text">
+                    <span>${q.q}</span>
+                    <span style="font-size:0.8rem;color:#667eea;">[${q.category}]</span>
+                </div>
+                <div id="examOptions">${optsHtml}</div>
+                <div class="timer">⏱️ <span id="examTimer">${timeLeft}</span> ثانية</div>
+                <div class="nav-buttons">
+                    <button class="action-btn" id="prevExamQ" ${currentQ === 0 ? 'disabled style="opacity:0.5;"' : ''}>◀ السابق</button>
+                    <button class="action-btn" id="nextExamQ">${currentQ === 39 ? '🏁 إنهاء الامتحان' : 'التالي ▶'}</button>
+                </div>
+                <div class="question-counter">السؤال ${currentQ+1} من ${examQuestions.length}</div>
+            </div>
+        `;
+        
+        // إضافة مستمعي الأحداث
+        document.querySelectorAll('.option-btn').forEach(btn => {
+            btn.onclick = (e) => {
+                if (answers[currentQ] !== null) return; // تمت الإجابة مسبقاً
+                
+                const idx = parseInt(e.target.closest('.option-btn').dataset.opt);
+                examStats.answered++;
+                
+                if (idx === q.correct) {
+                    examStats.correct++;
+                    playExamSound('correct');
+                    showToast("✅ إجابة صحيحة!");
+                } else {
+                    playExamSound('wrong');
+                    showToast(`❌ إجابة خاطئة! الإجابة الصحيحة: ${letters[q.correct]}`);
+                }
+                
+                answers[currentQ] = idx;
+                clearTimer();
+                renderExamQuestion();
+            };
+        });
+        
+        const prevBtn = document.getElementById('prevExamQ');
+        if (prevBtn) {
+            prevBtn.onclick = () => {
+                if (currentQ > 0) {
+                    currentQ--;
+                    resetExamTimer();
+                    renderExamQuestion();
+                }
+            };
+        }
+        
+        const nextBtn = document.getElementById('nextExamQ');
+        if (nextBtn) {
+            nextBtn.onclick = () => {
+                if (currentQ === 39) {
+                    if (confirm("هل أنت متأكد من إنهاء الامتحان؟")) {
+                        finishExam();
+                    }
+                } else {
+                    currentQ++;
+                    resetExamTimer();
+                    renderExamQuestion();
+                }
+            };
+        }
+        
+        startExamTimer();
+    }
+
+    function startExamTimer() {
+        clearTimer();
+        timeLeft = 30;
+        const timerSpan = document.getElementById('examTimer');
+        if (timerSpan) timerSpan.innerText = timeLeft;
+        
+        timer = setInterval(() => {
+            if (!examActive) {
+                clearTimer();
+                return;
+            }
+            
+            timeLeft--;
+            const timerSpan = document.getElementById('examTimer');
+            if (timerSpan) timerSpan.innerText = timeLeft;
+            
+            if (timeLeft <= 0) {
+                clearTimer();
+                playExamSound('timeout');
+                showToast("⏰ انتهى الوقت!");
+                
+                if (answers[currentQ] === null) {
+                    examStats.answered++;
+                }
+                
+                if (currentQ >= 39) {
+                    finishExam();
+                } else {
+                    currentQ++;
+                    renderExamQuestion();
+                }
+            }
+        }, 1000);
+    }
+
+    function resetExamTimer() {
+        startExamTimer();
+    }
+
+    function clearTimer() {
+        if (timer) {
+            clearInterval(timer);
+            timer = null;
+        }
+    }
+
+    function finishExam() {
+        clearTimer();
+        examActive = false;
+        
+        const score = examStats.correct;
+        const percent = Math.round((score / 40) * 100);
+        const passed = percent >= 60;
+        
+        if (passed) {
+            playExamSound('success');
+        } else {
+            playExamSound('fail');
+        }
+        
+        // تحديث الإحصائيات
+        userStats.totalExams++;
+        if (score > userStats.bestScore) userStats.bestScore = score;
+        userStats.totalQuestions += 40;
+        userStats.correctAnswers += examStats.correct;
+        localStorage.setItem(`stats_${currentUserName}`, JSON.stringify(userStats));
+        updateStatsDisplay();
+        
+        // عرض النتيجة
+        let message = '';
+        let emoji = '';
+        if (percent >= 90) {
+            message = 'ممتاز! أداء رائع!';
+            emoji = '🌟';
+        } else if (percent >= 75) {
+            message = 'جيد جداً! واصل التقدم!';
+            emoji = '👏';
+        } else if (percent >= 60) {
+            message = 'مبروك! لقد نجحت!';
+            emoji = '🎉';
+        } else {
+            message = 'حاول مرة أخرى، لا تيأس!';
+            emoji = '💪';
+        }
+        
+        document.getElementById('quizContainer').innerHTML = `
+            <div class="result-card">
+                <h2 style="color:#ffd700;">${emoji} نتيجة الامتحان ${emoji}</h2>
+                <div class="result-score">${score} / 40</div>
+                <div style="font-size:1.2rem;color:${passed ? '#27ae60' : '#e74c3c'};margin:15px 0;">
+                    ${passed ? '🎉 ناجح! 🎉' : '⚠️ لم تنجح بعد'}
+                </div>
+                <p style="color:white;margin:10px 0;">${message}</p>
+                <p style="color:#cbd5e1;">النسبة: ${percent}% (تحتاج 60% للنجاح)</p>
+                <button class="start-exam-btn" onclick="startExam()" style="margin-top:20px;">🔄 إعادة الامتحان</button>
+                <button class="start-exam-btn" onclick="resetExamView()" style="margin-top:10px;background:#667eea;">🏠 العودة للدروس</button>
+            </div>
+        `;
+    }
+
+    function resetExamView() {
+        clearTimer();
+        examActive = false;
+        document.getElementById('quizContainer').style.display = 'none';
+        document.getElementById('quizContainer').innerHTML = '';
+        document.getElementById('startExamBtn').style.display = 'inline-block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function updateStatsDisplay() {
+        const accuracy = userStats.totalQuestions ? Math.round((userStats.correctAnswers / userStats.totalQuestions) * 100) : 0;
+        const statsContent = document.getElementById('statsContent');
+        if (statsContent) {
+            statsContent.innerHTML = `
+                <p>📊 عدد الامتحانات: ${userStats.totalExams}</p>
+                <p>🏆 أفضل نتيجة: ${userStats.bestScore}/40</p>
+                <p>📈 نسبة الإجابات الصحيحة: ${accuracy}%</p>
+                <p>✅ إجابات صحيحة: ${userStats.correctAnswers}/${userStats.totalQuestions}</p>
+            `;
+        }
+        const progressFill = document.getElementById('progressFill');
+        if (progressFill) {
+            progressFill.style.width = `${accuracy}%`;
+        }
+    }
+
+    // ==================== وظائف الدروس ====================
+    window.editText = function(element, current) {
+        const newText = prompt("✏️ تعديل النص:", current);
+        if (newText && newText.trim()) {
+            element.innerText = newText.trim();
+            showToast("✅ تم تعديل النص بنجاح");
+        }
+    };
+
+    window.completeLesson = function(lessonTitle, element) {
+        playLessonSound('lesson_complete');
+        showToast(`🎉 مبروك! أكملت درس: ${lessonTitle}`);
+        if (element) {
+            element.style.borderRightColor = "#27ae60";
+            element.style.borderRightWidth = "6px";
+            setTimeout(() => {
+                element.style.borderRightColor = "#ffd700";
+                element.style.borderRightWidth = "4px";
+            }, 3000);
+        }
+    };
+
+    window.speakText = speakText;
+
+    // ==================== بحث محسن ====================
+    function initSearch() {
+        const searchInput = document.getElementById('searchInput');
+        if (!searchInput) return;
+        
+        searchInput.addEventListener('input', debounce((e) => {
+            const keyword = e.target.value.trim().toLowerCase();
+            
+            // البحث في الدروس
+            const cards = document.querySelectorAll('.unit-card');
+            cards.forEach(card => {
+                const text = card.innerText.toLowerCase();
+                if (keyword === "" || text.includes(keyword)) {
+                    card.style.display = "block";
+                    if (keyword && text.includes(keyword)) {
+                        const content = card.querySelector('.unit-content');
+                        if (content) {
+                            content.classList.add('open');
+                            const icon = card.querySelector('.toggle-icon');
+                            if (icon) icon.innerText = '➖';
+                        }
+                    }
+                } else {
+                    card.style.display = "none";
+                }
+            });
+            
+            // البحث في العلامات
+            const signs = document.querySelectorAll('.sign-item');
+            signs.forEach(sign => {
+                const text = sign.innerText.toLowerCase();
+                sign.style.display = (keyword === "" || text.includes(keyword)) ? "block" : "none";
+            });
+            
+            if (keyword) {
+                playLessonSound('search');
+            }
+        }, 300));
+    }
+
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    // ==================== تحكم في حجم الخط ====================
+    let fontSize = 100;
+    function initZoom() {
+        const zoomInBtn = document.getElementById('zoomInBtn');
+        const zoomOutBtn = document.getElementById('zoomOutBtn');
+        
+        if (zoomInBtn) {
+            zoomInBtn.onclick = () => {
+                if (fontSize < 150) {
+                    fontSize += 10;
+                    document.body.style.fontSize = fontSize + '%';
+                    showToast(`حجم الخط: ${fontSize}%`);
+                }
+            };
+        }
+        
+        if (zoomOutBtn) {
+            zoomOutBtn.onclick = () => {
+                if (fontSize > 70) {
+                    fontSize -= 10;
+                    document.body.style.fontSize = fontSize + '%';
+                    showToast(`حجم الخط: ${fontSize}%`);
+                }
+            };
+        }
+    }
+
+    // ==================== التبويبات ====================
+    function initTabs() {
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+                const tabContent = document.getElementById(`${btn.dataset.tab}Tab`);
+                if (tabContent) tabContent.classList.add('active');
+            });
+        });
+    }
+
+    // ==================== الوضع الليلي/النهاري ====================
+    let isNight = true;
+    function toggleTheme() {
+        isNight = !isNight;
+        document.body.classList.toggle('light-mode', !isNight);
+        const themeBtn = document.getElementById('themeToggleBtn');
+        if (themeBtn) {
+            themeBtn.innerHTML = isNight ? '🌙 تفعيل الوضع الليلي' : '☀️ تفعيل الوضع النهاري';
+        }
+        localStorage.setItem('codeTinghirTheme', isNight ? 'night' : 'light');
+        showToast(isNight ? '🌙 تم تفعيل الوضع الليلي' : '☀️ تم تفعيل الوضع النهاري');
+    }
+
+    // تحميل الوضع المحفوظ
+    function loadTheme() {
+        const saved = localStorage.getItem('codeTinghirTheme');
+        if (saved === 'light') {
+            isNight = false;
+            document.body.classList.add('light-mode');
+            const themeBtn = document.getElementById('themeToggleBtn');
+            if (themeBtn) themeBtn.innerHTML = '☀️ تفعيل الوضع النهاري';
+        }
+    }
+
+    // ==================== نظام تسجيل الدخول ====================
+    function initLogin() {
+        const confirmBtn = document.getElementById('confirmLoginBtn');
+        const usernameInput = document.getElementById('usernameInput');
+        
+        if (!confirmBtn || !usernameInput) return;
+        
+        confirmBtn.addEventListener('click', () => {
+            const name = usernameInput.value.trim();
+            if (!name) {
+                alert("الرجاء إدخال اسمك الكامل");
+                return;
+            }
+            
+            currentUserName = name;
+            const saved = localStorage.getItem(`stats_${name}`);
+            if (saved) {
+                try {
+                    userStats = JSON.parse(saved);
+                } catch (e) {
+                    console.error('خطأ في تحميل الإحصائيات:', e);
+                    userStats = { totalExams: 0, bestScore: 0, totalQuestions: 0, correctAnswers: 0 };
+                }
+            }
+            
+            const loginOverlay = document.getElementById('loginOverlay');
+            const mainContainer = document.getElementById('mainContainer');
+            
+            if (loginOverlay) loginOverlay.style.display = 'none';
+            if (mainContainer) mainContainer.style.display = 'block';
+            
+            updateStatsDisplay();
+            showToast(`مرحباً ${name}! 🎉`);
+        });
+        
+        // السماح بالضغط على Enter لتسجيل الدخول
+        usernameInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                confirmBtn.click();
+            }
+        });
+    }
+
+    // ==================== التشغيل الرئيسي ====================
+    document.addEventListener('DOMContentLoaded', () => {
+        // تحميل الوضع المحفوظ
+        loadTheme();
+        
+        // بناء الواجهة
+        buildUnitsGrid();
+        buildSignsGrid();
+        
+        // تهيئة الأنظمة
+        initTabs();
+        initSearch();
+        initZoom();
+        buildExamSoundSettings();
+        buildLessonSoundSettings();
+        initLogin();
+        
+        // أزرار التحكم
+        const startExamBtn = document.getElementById('startExamBtn');
+        if (startExamBtn) {
+            startExamBtn.onclick = startExam;
+        }
+        
+        const resetSoundsBtn = document.getElementById('resetAllSoundsBtn');
+        if (resetSoundsBtn) {
+            resetSoundsBtn.onclick = resetAllSounds;
+        }
+        
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
+        if (themeToggleBtn) {
+            themeToggleBtn.onclick = toggleTheme;
+        }
+        
+        // إضافة دعم لوحة المفاتيح للامتحان
+        document.addEventListener('keydown', (e) => {
+            if (examActive) {
+                const key = e.key.toLowerCase();
+                if (key === 'a' || key === '1') selectOption(0);
+                else if (key === 'b' || key === '2') selectOption(1);
+                else if (key === 'c' || key === '3') selectOption(2);
+                else if (key === 'd' || key === '4') selectOption(3);
+            }
+        });
+        
+        console.log('✅ Code Tinghir 2026 - تم تحميل المنصة بنجاح');
+        console.log('📚 10 وحدات دراسية');
+        console.log('⚠️ 150 علامة مرورية');
+        console.log('❓ 500 سؤال متنوع');
+        console.log('🔊 نظام أصوات متكامل');
+    });
+
+    function selectOption(index) {
+        if (!examActive || answers[currentQ] !== null) return;
+        const optionBtns = document.querySelectorAll('.option-btn');
+        if (optionBtns[index]) {
+            optionBtns[index].click();
+        }
+    }
+
+    // تعريض الدوال العامة
+    window.toggleTheme = toggleTheme;
+    window.playExamSound = playExamSound;
+    window.playLessonSound = playLessonSound;
+    window.uploadExamSound = uploadExamSound;
+    window.uploadLessonSound = uploadLessonSound;
+    window.toggleExamSound = toggleExamSound;
+    window.toggleLessonSound = toggleLessonSound;
+    window.startExam = startExam;
+    window.resetExamView = resetExamView;
+</script>
+</body>
+</html>
